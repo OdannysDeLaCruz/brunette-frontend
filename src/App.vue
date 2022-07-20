@@ -1,6 +1,8 @@
 <template>
-    <BHeader />
-    <router-view/>
+    <div class="app">
+        <BHeader />
+        <router-view/>
+    </div>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
@@ -17,4 +19,15 @@ export default defineComponent({
 })
 </script>
 <style lang="scss">
+.container {
+    padding: 0 16px;
+    width: 100%;
+    max-width: 1240px;
+    margin: auto;
+}
+.container-fluid {
+    padding: 0 16px;
+    width: 100%;
+    max-width: 100%;
+}
 </style>

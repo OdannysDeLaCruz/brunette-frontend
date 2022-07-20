@@ -8,7 +8,7 @@ import BSearch from '@/components/BSearch.vue';
 const router = useRouter()
 </script>
 <template>
-  <header class="header">
+  <header class="header container-fluid">
     <div class="header__logo" @click="router.push({ name: 'Home' })">
       <BLogo class="header__logo-image" />
     </div>

@@ -26,7 +26,7 @@ onMounted(() => {
 </script>
 <template>
     <div class="carousel-categories">
-        <div class="carousel-categories__wrapper">
+        <div class="container carousel-categories__wrapper">
             <div class="carousel-categories__slider">
                 <div
                     v-for="(category, index) in categories"
@@ -44,7 +44,7 @@ onMounted(() => {
     display: flex;
     align-items: center;
     overflow: hidden;
-    overflow-x: scroll;
+    overflow-x: auto;
     height: 40px;
     padding-left: 20px;
 }
