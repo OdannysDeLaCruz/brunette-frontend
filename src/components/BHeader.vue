@@ -1,3 +1,12 @@
+<script lang="ts" setup>
+import { useRouter } from 'vue-router';
+import BButton from '@/components/BButton.vue';
+import BCart from '@/components/BCart.vue';
+import BLogo from '@/components/BLogo.vue';
+import BSearch from '@/components/BSearch.vue';
+
+const router = useRouter()
+</script>
 <template>
   <header class="header">
     <div class="header__logo" @click="router.push({ name: 'Home' })">
@@ -16,32 +25,6 @@
     </div>
   </header>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue';
-import { useRouter } from 'vue-router';
-import BButton from '@/components/BButton.vue';
-import BCart from '@/components/BCart.vue';
-import BLogo from '@/components/BLogo.vue';
-import BSearch from '@/components/BSearch.vue';
-
-export default defineComponent({
-  name: 'BHeader',
-  components: {
-    BButton,
-    BCart,
-    BLogo,
-    BSearch
-  },
-  setup() {
-    const router = useRouter()
-
-    return {
-      router
-    }
-  }
-});
-</script>
 <style scoped lang="scss">
 .header {
   display: flex;

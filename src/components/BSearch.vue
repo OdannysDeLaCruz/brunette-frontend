@@ -13,47 +13,33 @@
         <input ref="searchInput" v-model="searchInputModel" type="search" class="search__input">
     </div>
 </template>
-<script lang="ts">
+<script lang="ts" setup>
 import { onMounted } from 'vue'
 import { watch } from 'vue'
 import { ref } from 'vue'
-import { defineComponent } from 'vue'
 
-export default defineComponent({
-    name: 'BSearch',
-    setup() {
-        const searchWrapper = ref()
-        const searchIcon = ref()
-        const searchLabel = ref()
-        const searchInput = ref()
-        const searchInputModel = ref('')
+const searchWrapper = ref()
+const searchIcon = ref()
+const searchLabel = ref()
+const searchInput = ref()
+const searchInputModel = ref('')
 
-        watch(searchInputModel, ( newVal: string ) => {
-            if ( newVal === '') {
-                searchWrapper.value.style.display = "flex"
-            } else {
-                searchWrapper.value.style.display = "none"
-            }
-        })
+watch(searchInputModel, ( newVal: string ) => {
+    if ( newVal === '') {
+        searchWrapper.value.style.display = "flex"
+    } else {
+        searchWrapper.value.style.display = "none"
+    }
+})
 
-        onMounted(() => {
-            searchInput.value.addEventListener('focus', () => {
-                searchWrapper.value.classList.add('move-left')
-            })
+onMounted(() => {
+    searchInput.value.addEventListener('focus', () => {
+        searchWrapper.value.classList.add('move-left')
+    })
 
-            searchInput.value.addEventListener('blur', () => {
-                searchWrapper.value.classList.remove('move-left')
-            })
-        })
-
-        return {
-            searchWrapper,
-            searchIcon,
-            searchLabel,
-            searchInput,
-            searchInputModel
-        }
-    },
+    searchInput.value.addEventListener('blur', () => {
+        searchWrapper.value.classList.remove('move-left')
+    })
 })
 </script>
 <style lang="scss" scoped>
