@@ -15,7 +15,7 @@ import 'vue3-carousel/dist/carousel.css';
         </slide>
 
         <template #addons>
-            <navigation />
+            <!-- <navigation /> -->
             <pagination />
         </template>
     </carousel>

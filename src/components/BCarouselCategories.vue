@@ -40,6 +40,9 @@ onMounted(() => {
     </div>
 </template>
 <style lang="scss" scoped>
+.carousel-categories {
+    background: #ffffff;
+}
 .carousel-categories__wrapper {
     display: flex;
     align-items: center;

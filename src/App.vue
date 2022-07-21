@@ -19,6 +19,9 @@ export default defineComponent({
 })
 </script>
 <style lang="scss">
+body {
+  background: #EBEBEB;
+}
 .container {
     padding: 0 16px;
     width: 100%;

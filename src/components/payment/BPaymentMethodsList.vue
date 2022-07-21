@@ -45,6 +45,7 @@ const paymentMethodsList = [
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     min-height: 90px;
+    background: #ffffff;
 }
 .payment-method-list::-webkit-scrollbar {
     height: 4px;

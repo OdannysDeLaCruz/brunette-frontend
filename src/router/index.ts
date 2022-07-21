@@ -12,9 +12,30 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "home" */ '../views/BHomePage.vue')
   },
   {
+      path: '/categories/:name',
+      name: 'Categories',
+      component: () => import(/* webpackChunkName: "categories" */ '../views/BCategoriesPage.vue'),
+      children: [
+          {
+              path: '',
+              component: () => import(/* webpackChunkName: "category" */ '../views/BCategoryPage.vue')
+          }
+      ]
+  },
+  // {
+  //   path: '/categories/:name',
+  //   name: 'Category',
+  //   component: () => import(/* webpackChunkName: "category" */ '../views/BCategoryPage.vue')
+  // },
+  {
     path: '/register',
     name: 'Register',
     component: () => import(/* webpackChunkName: "register" */ '../views/BRegisterPage.vue')
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: () => import(/* webpackChunkName: "not_found" */ '../views/error/BNotFoundPage.vue')
   }
 ]
 
