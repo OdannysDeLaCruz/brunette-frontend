@@ -12,7 +12,7 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "home" */ '../views/BHomePage.vue')
   },
   {
-      path: '/categories/:name',
+      path: '/categories/:category',
       name: 'Categories',
       component: () => import(/* webpackChunkName: "categories" */ '../views/BCategoriesPage.vue'),
       children: [

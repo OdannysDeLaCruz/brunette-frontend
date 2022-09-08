@@ -6,11 +6,16 @@
     box-sizing: border-box;
     font-family: 'Nunito', sans-serif;
 }
-
+body {
+    background: #EBEBEB;
+}
 :root {
     --color-primary: #FFCC00;
 }
 a {
     text-decoration: none;
     color: #454CDE;
+}
+ul, li {
+    list-style: none;
 }
