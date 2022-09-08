@@ -1,11 +1,18 @@
 <script lang="ts" setup>
 import { useRoute } from 'vue-router';
-import BProduct from '@/components/BProduct.vue';
+import BProductFluid from '@/components/BProductFluid.vue';
 import BBreadCrumb from '@/components/BBreadCrumb.vue';
 const route = useRoute()
 </script>
 <template>
     <section class="category">
+        <!-- Mobile filters -->
+        <div class="mobile__filters">
+            <p class="mobile__filters__results category__results">100 resultados</p>
+            <button class="mobile-filters__button">
+                Filtrar <img src="@/assets/icons/icon-chevron-bottom-blue.svg" alt="Botón filtrar">
+            </button>
+        </div>
 
         <div class="category__summary">
             <BBreadCrumb
@@ -18,7 +25,7 @@ const route = useRoute()
 
 
         <section class="category__products-list">
-            <BProduct 
+            <BProductFluid 
                 class="category__products-list__item"
                 v-for="i in [0,1,2,3,4,5,6,7,8,9]"
                 :key="i"
@@ -32,7 +39,7 @@ const route = useRoute()
 .category {
     background: rgba(255, 255, 255, 0.5);
     border-radius: 5px;
-    padding: 16px;
+    padding: 0;
 }
 .category__summary {
     display: none;
@@ -59,10 +66,34 @@ const route = useRoute()
 .category__products-list {
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    // grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 .category__products-list__item {
     width: 100%;
+}
+.mobile__filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    box-shadow: 0px 5px 12px -7px rgba(0, 0, 0, 0.25);
+    padding: 16px;
+    height: 35px;
+    margin-bottom: 20px;
+}
+.mobile__filters__results {
+    margin: 0;
+}
+.mobile-filters__button {
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    color: #147ECC;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 9px;
+    
 }
 
 @media (min-width: 576px) {
@@ -75,6 +106,9 @@ const route = useRoute()
     .category__products-list {
         grid-gap: 25px;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .mobile__filters {
+        display: none;
     }
 }
 
