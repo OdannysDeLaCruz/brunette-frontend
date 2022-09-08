@@ -39,6 +39,7 @@
         background: rgba(255, 255, 255, 0.5);
         border-radius: 5px;
         padding: 0;
+        position: relative;
     }
     .category__summary {
         display: none;
