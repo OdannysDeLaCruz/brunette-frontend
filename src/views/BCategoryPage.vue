@@ -1,11 +1,22 @@
 <script lang="ts" setup>
 import { useRoute } from 'vue-router';
 import BProduct from '@/components/BProduct.vue';
+import BBreadCrumb from '@/components/BBreadCrumb.vue';
 const route = useRoute()
 </script>
 <template>
     <section class="category">
-        <h1 class="category__title">{{ route.params.category }}</h1>
+
+        <div class="category__summary">
+            <BBreadCrumb
+                class="category__breadcrumb"
+                :routes="['home', 'categorias', route.params.category ]"
+            />
+            <h1 class="category__title">{{ route.params.category }}</h1>
+            <p class="category__results">100 resultados</p>
+        </div>
+
+
         <section class="category__products-list">
             <BProduct 
                 class="category__products-list__item"
@@ -23,14 +34,27 @@ const route = useRoute()
     border-radius: 5px;
     padding: 16px;
 }
+.category__summary {
+    display: none;
+}
+.category__breadcrumb {
+    margin-bottom: 10px;
+}
 .category__title {
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
     line-height: 33px;
     color: #000000;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     text-transform: capitalize;
+}
+.category__results {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #777777;
+    margin-bottom: 30px;
 }
 .category__products-list {
     display: grid;
@@ -43,7 +67,10 @@ const route = useRoute()
 
 @media (min-width: 576px) {
     .category {
-        padding: 20px 16px;
+        padding: 30px;
+    }
+    .category__summary {
+        display: block;
     }
     .category__products-list {
         grid-gap: 25px;
