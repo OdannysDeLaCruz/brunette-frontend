@@ -22,11 +22,6 @@ const routes: Array<RouteRecordRaw> = [
           }
       ]
   },
-  // {
-  //   path: '/categories/:name',
-  //   name: 'Category',
-  //   component: () => import(/* webpackChunkName: "category" */ '../views/BCategoryPage.vue')
-  // },
   {
     path: '/register',
     name: 'Register',
