@@ -4,35 +4,41 @@ import BButton from '@/components/BButton.vue';
 import BCart from '@/components/BCart.vue';
 import BLogo from '@/components/BLogo.vue';
 import BSearch from '@/components/BSearch.vue';
+import BContent from './layouts/BContent.vue';
 
 const router = useRouter()
 </script>
 <template>
-    <header class="container-fluid header">
-        <div class="container header__wrapper">
-            <div class="header__logo" @click="router.push({ name: 'Home' })">
-                <router-link to="/home">
-                    <BLogo class="header__logo-image" />
-                </router-link>
+    <BContent class="content-custom">
+        <header class="header">
+            <div class="header__wrapper">
+                <div class="header__logo" @click="router.push({ name: 'Home' })">
+                    <router-link to="/home">
+                        <BLogo class="header__logo-image" />
+                    </router-link>
+                </div>
+                <div class="header__search header__search--full">
+                    <BSearch />
+                </div>  
+                <div class="header__nav">
+                    <nav class="nav">
+                        <div class="header__search--small">
+                            <img src="@/assets/icons/icon-search.svg" alt="">
+                        </div>
+                        <BCart />
+                        <!-- <div class="separator"></div> -->
+                        <!-- <BButton @click="router.push({ name: 'Register' })"> Registrarse </BButton> -->
+                        <!-- <BButton mode="orange"> Ingresar </BButton> -->
+                    </nav>
+                </div>
             </div>
-            <div class="header__search header__search--full">
-                <BSearch />
-            </div>  
-            <div class="header__nav">
-                <nav class="nav">
-                    <div class="header__search--small">
-                        <img src="@/assets/icons/icon-search.svg" alt="">
-                    </div>
-                    <BCart />
-                    <!-- <div class="separator"></div> -->
-                    <!-- <BButton @click="router.push({ name: 'Register' })"> Registrarse </BButton> -->
-                    <!-- <BButton mode="orange"> Ingresar </BButton> -->
-                </nav>
-            </div>
-        </div>
-    </header>
+        </header>
+    </BContent>
 </template>
 <style scoped lang="scss">
+.content-custom {
+    background: #ffffff;
+}
 .header {
     padding: 16px 18px;
     border-bottom: 1px solid #F4F4F4;
