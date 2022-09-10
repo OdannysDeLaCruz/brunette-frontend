@@ -76,6 +76,8 @@ const hideModalFilter = () => {
     top: 40px;
     right: 0px;
     z-index: 9;
+    border-radius: 5px;
+    overflow: hidden;
 }
 .filters__accordion {
     border-top: 1px solid #C6C6C6;
