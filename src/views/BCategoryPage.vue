@@ -1,10 +1,26 @@
 <script lang="ts" setup>
-import { useRoute } from 'vue-router';
+import { ref, onMounted } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import BProductFluid from '@/components/BProductFluid.vue';
 import BBreadCrumb from '@/components/BBreadCrumb.vue';
 import BModalFilter from '../components/menus/filters/BModalFilter.vue';
 import BProductDetail from '@/components/BProductDetail.vue';
 const route = useRoute()
+const router = useRouter()
+const productDetail = ref('')
+
+onMounted(() => {
+    if (route.query.productDetail) {
+        productDetail.value = String(route.query.productDetail)
+    }
+})
+
+const closeDetail = () => {
+    productDetail.value = ''
+    router.replace({
+        query: undefined
+    })
+}
 </script>
 
 <template>
@@ -34,7 +50,7 @@ const route = useRoute()
             />
         </section>
     </section>
-    <BProductDetail />
+    <BProductDetail :productDetail="productDetail" @closeDetail="closeDetail" />
 </template>
 
 <style lang="scss" scoped>
