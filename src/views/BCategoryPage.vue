@@ -5,18 +5,27 @@ import BProductFluid from '@/components/BProductFluid.vue';
 import BBreadCrumb from '@/components/BBreadCrumb.vue';
 import BModalFilter from '../components/menus/filters/BModalFilter.vue';
 import BProductDetail from '@/components/BProductDetail.vue';
+import { watch } from 'vue';
 const route = useRoute()
 const router = useRouter()
-const productDetail = ref('')
+const productDetail = ref()
+
+const setProductDetail = () => {
+    if (route.query.productDetail) {
+        productDetail.value = Number(route.query.productDetail)
+    }
+}
 
 onMounted(() => {
-    if (route.query.productDetail) {
-        productDetail.value = String(route.query.productDetail)
-    }
+    setProductDetail()
+})
+
+watch(route, () => {
+    setProductDetail()
 })
 
 const closeDetail = () => {
-    productDetail.value = ''
+    productDetail.value = null
     router.replace({
         query: undefined
     })
@@ -45,6 +54,7 @@ const closeDetail = () => {
                 class="category__products-list__item"
                 v-for="i in [0,1,2,3,4,5,6,7,8,9]"
                 :key="i"
+                :id="i"
                 :name="route.params.category"
                 :price="3500"
             />

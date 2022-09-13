@@ -18,6 +18,7 @@ const routes: Array<RouteRecordRaw> = [
       children: [
           {
               path: '',
+              name: 'Category',
               component: () => import(/* webpackChunkName: "category" */ '../views/BCategoryPage.vue')
           }
       ]

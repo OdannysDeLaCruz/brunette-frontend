@@ -1,7 +1,14 @@
 <script lang="ts" setup>
 import { defineProps } from "vue"
+import { useRouter } from "vue-router"
 
-defineProps({
+const router = useRouter()
+
+const props = defineProps({
+    id: {
+        type: Number,
+        required: true
+    },
     name: {
         type: String,
         default: ''
@@ -11,9 +18,17 @@ defineProps({
         default: 0
     },
 })
+
+const showDetail = () => {
+    router.push({
+        query: {
+            productDetail: props.id
+        }
+    })
+}
 </script>
 <template>
-    <div class="product">
+    <div class="product" @click="showDetail">
         <div class="product__wrapper-image">
             <img class="product__image" src="@/assets/images/kanekalon.jpeg" alt="">
         </div>
@@ -30,6 +45,7 @@ defineProps({
     background: #ffffff;
     overflow: hidden;
     padding: 10px;
+    cursor: pointer;
 }
 .product__wrapper-image {
     overflow: hidden;
