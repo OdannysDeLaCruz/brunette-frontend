@@ -3,6 +3,7 @@ import { defineProps, computed } from "vue"
 import BModal from "@/components/BModal.vue"
 import BButton from '@/components/BButton.vue';
 import BControlQuantity from "@/components/BControlQuantity.vue";
+import { ref } from "vue";
 
 const props = defineProps({
     productDetail: {
@@ -15,6 +16,16 @@ const emits = defineEmits(['closeDetail'])
 
 const closeModal = () => {
     emits('closeDetail')
+}
+
+const quantity = ref(0)
+const onDecrease = () => {
+    if ( quantity.value > 0 ) {
+        quantity.value -= 1
+    }
+}
+const onIncrease = () => {
+    quantity.value += 1
 }
 
 </script>
@@ -40,7 +51,8 @@ const closeModal = () => {
                         <span class="detail__price">$14.000</span>
                         <p class="detail__description">Cabello sintetico para trenzas marca jumbo brais.</p>
                         <div class="detail__section-add">
-                            <BControlQuantity />
+                            <BControlQuantity :quantity="quantity" @onDecrease="onDecrease" @onIncrease="onIncrease" />
+
                             <BButton color="#000000" bg="#E7E7E7" padding="10px 16px" class="control-quantity__button-add"> AGREGAR AL CARRITO </BButton>
                             <BButton color="#ffffff" bg="#FFCC00" padding="10px 16px" class="control-quantity__button-buy"> COMPRAR DE UNA </BButton>
                         </div>
@@ -106,6 +118,7 @@ const closeModal = () => {
     font-size: 16px;
     line-height: 20px;
     color: #7D7D7D;
+    margin-top: 20px;
 }
 
 .detail__section-add {
@@ -135,7 +148,7 @@ const closeModal = () => {
     }
     .detail__description {
         font-size: 16px;
-        line-height: 35px;
+        // line-height: 35px;
     }
 }
 </style>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { defineProps } from "vue"
+import { defineProps, defineEmits } from "vue"
 
 defineProps({
     quantity: {
@@ -7,13 +7,23 @@ defineProps({
         default: 0
     }
 })
+
+const emits = defineEmits(['onDecrease', 'onIncrease'])
+
+const handleDecrease = () => {
+    emits('onDecrease')
+}
+
+const handleIncrease = () => {
+    emits('onIncrease')
+}
 </script>
 
 <template>
     <div class="control-quantity">
-        <button class="control-quantity__button">-</button>
+        <button class="control-quantity__button" @click="handleDecrease">-</button>
         <div class="control-quantity__counter">{{ quantity }}</div>
-        <button class="control-quantity__button">+</button>
+        <button class="control-quantity__button" @click="handleIncrease">+</button>
     </div>    
 </template>
 
