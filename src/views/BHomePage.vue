@@ -4,44 +4,50 @@ import BBanner from '@/components/BBanner.vue'
 import BPaymentMethodsList from '@/components/payment/BPaymentMethodsList.vue';
 import BCarouselProducts from '@/components/BCarouselProducts.vue';
 import { onMounted, ref } from 'vue';
+import BContent from '@/components/layouts/BContent.vue';
 
-const products: any = ref([])
-
-onMounted(() => {
-    products.value = [
-        {
-            name: "Kanekalon",
-            price: 10000
-        },
-        {
-            name: "Lanapelo",
-            price: 3500
-        },
-        {
-            name: "Kanekalon",
-            price: 10000
-        },
-        {
-            name: "Lanapelo",
-            price: 3500
-        },
-        {
-            name: "Kanekalon",
-            price: 10000
-        },
-        {
-            name: "Lanapelo",
-            price: 3500
-        },
-    ]
-})
+const products: any = ref([
+    {
+        id: 1,
+        name: "Version Mobile Kanekalon californiano",
+        price: 10000
+    },
+    {
+        id: 2,
+        name: "Lanapelo",
+        price: 3500
+    },
+    {
+        id: 3,
+        name: "Kanekalon",
+        price: 10000
+    },
+    {
+        id: 4,
+        name: "Lanapelo",
+        price: 3500
+    },
+    {
+        id: 6,
+        name: "Kanekalon",
+        price: 10000
+    },
+    {
+        id: 7,
+        name: "Lanapelo",
+        price: 3500
+    },
+])
 
 </script>
 <template>
-    <div class="home">
+
+    <BContent class="content-custom__carousel-categories">
         <section class="section__carousel-categories">
             <BCarouselCategories />
         </section>
+    </BContent>
+    <BContent class="content-custom__general">
         <section class="container section__banner-main">
             <BBanner />
         </section>
@@ -60,11 +66,14 @@ onMounted(() => {
         <section class="container section__carousel-products">
             <BCarouselProducts title="Kanekalon" link="categories/kanekalon" :products="products" />
         </section>
-    </div>
+    </BContent>
 </template>
 <style lang="scss" scoped>
-.home {
-    padding: 0 0 40px 0;
+.content-custom__carousel-categories {
+    background: #ffffff;
+}
+.content-custom__general {
+    padding: 16px;
 }
 .section__carousel-categories {
     position: sticky;
@@ -72,7 +81,6 @@ onMounted(() => {
     z-index: 9;
 }
 .section__banner-main {
-    padding: 16px;
     margin-top: 30px;
 }
 

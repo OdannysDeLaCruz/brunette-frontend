@@ -27,14 +27,14 @@ defineProps({
 .product {
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: 160px;
     border-radius: 8px;
     background: #ffffff;
     overflow: hidden;
 }
 .product__wrapper-image {
     width: 100%;
-    height: 200px;
+    height: 150px;
 }
 .product__image {
     object-fit: cover;
@@ -42,23 +42,43 @@ defineProps({
     height: 100%;
 }
 .product__body {
+    height: 80px;
     display: flex;
     flex-direction: column;
     padding: 8px 8px 16px 8px;
 }
 .product__price {
+    font-family: "Roboto", sans-serif;
     font-weight: 700;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 14px;
+    line-height: 11px;
     color: #FFCC00;
     text-align: left;
     margin-bottom: 5px;
 }
 .product__name {
+    font-family: "Roboto", sans-serif;
     text-align: left;
     font-weight: 700;
-    font-size: 15px;
-    line-height: 16px;
+    font-size: 12px;
+    line-height: 12px;
     color: rgba(0, 0, 0, 0.7);
+}
+
+@media (min-width: 575px) {
+    .product {
+        width: 200px;
+    }
+    .product__wrapper-image {
+        height: 200px;
+    }
+    .product__price {
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .product__name {
+        font-size: 14px;
+        line-height: 16px;
+    }
 }
 </style>

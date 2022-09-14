@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
+import BContent from './layouts/BContent.vue';
 
 type CategoryType = {
     name: string

@@ -1,9 +1,9 @@
 <script lang="ts" setup>
+import { defineProps } from 'vue';
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 import 'vue3-carousel/dist/carousel.css';
-import BProduct from './BProduct.vue';
-import { defineProps } from 'vue';
+import BProduct from '@/components/BProduct.vue';
 
 const breakpoints = {
     0: {
@@ -11,7 +11,7 @@ const breakpoints = {
         snapAlign: 'start',
     },
     300: {
-        itemsToShow: 1.7,
+        itemsToShow: 1.9,
         snapAlign: 'start',
     },
     480: {
@@ -38,9 +38,9 @@ defineProps({
         default: '#'
     },
     products: {
-        type: Object,
+        type: Array,
         default() {
-            return {}
+            return []
         }
     }
 })
@@ -58,7 +58,7 @@ defineProps({
         >
             <slide 
                 v-for="product in products" 
-                :key="product.name"
+                :key="product.id"
             >
                 <BProduct :name="product.name" :price="product.price" />
             </slide>
