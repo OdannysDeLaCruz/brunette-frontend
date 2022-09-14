@@ -18,15 +18,11 @@ const routes: Array<RouteRecordRaw> = [
       children: [
           {
               path: '',
+              name: 'Category',
               component: () => import(/* webpackChunkName: "category" */ '../views/BCategoryPage.vue')
           }
       ]
   },
-  // {
-  //   path: '/categories/:name',
-  //   name: 'Category',
-  //   component: () => import(/* webpackChunkName: "category" */ '../views/BCategoryPage.vue')
-  // },
   {
     path: '/register',
     name: 'Register',
