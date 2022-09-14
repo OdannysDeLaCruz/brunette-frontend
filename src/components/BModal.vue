@@ -44,31 +44,6 @@ const closeModal = () => {
     bottom: 0;
     left: 0;
 }
-.modal--top {
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0 40px 40px;
-}
-.modal--center {
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-}
-.modal--bottom {
-    justify-content: center;
-    align-items: flex-end;
-    padding: 40px 40px 0;
-}
-.modal--left {
-    justify-content: flex-start;
-    align-items: center;
-    padding: 40px 40px 40px 0;
-}
-.modal--right {
-    justify-content: flex-end;
-    align-items: center;
-    padding: 40px 0 40px 40px;
-}
 .modal--full {
     justify-content: center;
     align-items: flex-start;
@@ -82,6 +57,7 @@ const closeModal = () => {
     width: 100%;
     height: 100%;
     display: flex;
+    padding: 0;
 }
 .modal__content {
     position: relative;
@@ -89,26 +65,6 @@ const closeModal = () => {
     max-width: v-bind(width);
     height: 100%;
     display: flex;
-}
-.modal__content--top {
-    justify-content: center;
-    align-items: flex-start;
-}
-.modal__content--center {
-    justify-content: center;
-    align-items: flex-start;
-}
-.modal__content--bottom {
-    flex-direction: column;
-    justify-content: flex-end;
-}
-.modal__content--left {
-    justify-content: center;
-    align-items: flex-start;
-}
-.modal__content--right {
-    justify-content: center;
-    align-items: flex-start;
 }
 .modal__content--full {
     justify-content: center;
@@ -121,4 +77,51 @@ const closeModal = () => {
     cursor: pointer;
 }
 
+@media (min-width: 576px) {
+    .modal--top {
+        justify-content: center;
+        align-items: flex-start;
+        padding: 0 40px 40px;
+    }
+    .modal--center {
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+    }
+    .modal--bottom {
+        justify-content: center;
+        align-items: flex-end;
+        padding: 40px 40px 0;
+    }
+    .modal--left {
+        justify-content: flex-start;
+        align-items: center;
+        padding: 40px 40px 40px 0;
+    }
+    .modal--right {
+        justify-content: flex-end;
+        align-items: center;
+        padding: 40px 0 40px 40px;
+    }
+    .modal__content--top {
+        justify-content: center;
+        align-items: flex-start;
+    }
+    .modal__content--center {
+        justify-content: center;
+        align-items: flex-start;
+    }
+    .modal__content--bottom {
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+    .modal__content--left {
+        justify-content: center;
+        align-items: flex-start;
+    }
+    .modal__content--right {
+        justify-content: center;
+        align-items: flex-start;
+    }
+}
 </style>

@@ -18,7 +18,7 @@ const closeModal = () => {
 </script>
 <template>
     <BModal 
-        position="bottom" 
+        position="center" 
         width="950px"
         :show="productDetail ? true : false"
         @closeModal="closeModal"
@@ -46,19 +46,21 @@ const closeModal = () => {
     overflow: hidden;
     overflow-y: auto;  
     border-radius: 10px;
-    height: 100%;
+    // height: 100%;
+    width: 100%;
 }
 .detail::-webkit-scrollbar {
     display: none;
 }
-
 .detail__content {
     background: #fff;
     border-radius: 10px;
     padding: 40px 30px;
     display: grid;
     grid-gap: 30px;
-    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
 }
 .detail__image-wrapper {
     max-width: 427px;
@@ -97,5 +99,11 @@ const closeModal = () => {
     font-size: 16px;
     line-height: 35px;
     color: #7D7D7D;
+}
+
+@media (min-width: 576px) {
+    .detail__content {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 </style>
