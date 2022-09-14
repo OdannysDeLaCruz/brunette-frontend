@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { defineProps, computed } from "vue"
 import BModal from "@/components/BModal.vue"
+import BButton from '@/components/BButton.vue';
+import BControlQuantity from "@/components/BControlQuantity.vue";
 
 const props = defineProps({
     productDetail: {
@@ -37,8 +39,10 @@ const closeModal = () => {
                         <!-- <h1 class="detail__title">Kanekalon Californiano Jumbo braid </h1> -->
                         <span class="detail__price">$14.000</span>
                         <p class="detail__description">Cabello sintetico para trenzas marca jumbo brais.</p>
-                        <div class="detail__">
-    
+                        <div class="detail__section-add">
+                            <BControlQuantity />
+                            <BButton color="#000000" bg="#E7E7E7" padding="10px 16px" class="control-quantity__button-add"> AGREGAR AL CARRITO </BButton>
+                            <BButton color="#ffffff" bg="#FFCC00" padding="10px 16px" class="control-quantity__button-buy"> COMPRAR DE UNA </BButton>
                         </div>
                     </div>
                 </div>
@@ -52,13 +56,8 @@ const closeModal = () => {
 </template>
 <style lang="scss" scoped>
 .detail {
-    // overflow: hidden;
-    // overflow-y: auto;
     width: 100%;
 }
-// .detail::-webkit-scrollbar {
-//     display: none;
-// }
 .detail__content {
     padding: 20px;
     display: grid;
@@ -105,8 +104,25 @@ const closeModal = () => {
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
-    line-height: 35px;
+    line-height: 20px;
     color: #7D7D7D;
+}
+
+.detail__section-add {
+    display: grid;
+    grid-gap: 16px;
+    align-items: center;
+    grid-template-columns: 100px 1fr;
+    grid-template-rows: 1fr;
+    margin-top: 40px;
+}
+
+.control-quantity__button-add {
+    width: 100%;
+}
+.control-quantity__button-buy {
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
 @media (min-width: 576px) {
@@ -115,6 +131,10 @@ const closeModal = () => {
     }
     .detail__title {
         font-size: 28px;
+        line-height: 35px;
+    }
+    .detail__description {
+        font-size: 16px;
         line-height: 35px;
     }
 }

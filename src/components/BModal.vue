@@ -116,8 +116,9 @@ const closeModal = () => {
     margin-top: v-bind(headerHeight);
     overflow: hidden;
     overflow-y: auto;
-    height: 100%;
+    // height: 100%;
     width: 100%;
+    padding-bottom: 40px;
 }
 .modal__body::-webkit-scrollbar {
     display: none;
@@ -169,6 +170,9 @@ const closeModal = () => {
     .modal__content--right {
         justify-content: center;
         align-items: flex-start;
+    }
+    .modal__body {
+        height: 100%;
     }
 }
 </style>
