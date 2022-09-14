@@ -19,43 +19,48 @@ const closeModal = () => {
 <template>
     <BModal 
         position="center" 
-        width="950px"
+        width="850px"
         :show="productDetail ? true : false"
         @closeModal="closeModal"
+        modalHeaderTitle="Kanekalon Californiano Jumbo braid"
     >
-        <div class="detail">
-            <div class="detail__content">
-                <div class="detail__image-wrapper">
-                    <img class="detail__image" src="@/assets/images/kanekalon.jpeg" alt="">
+        <template v-slot:modalHeader>
+            <h1 class="detail__title detail__title--no-wrapper">Kanekalon Californiano Jumbo braid </h1>
+        </template>
+        <template v-slot:modalBody>
+            <div class="detail">
+                <div class="detail__content">
+                    <div class="detail__image-wrapper">
+                        <img class="detail__image" src="@/assets/images/kanekalon.jpeg" alt="">
+                    </div>
+                    <div class="detail__summary">
+                        <!-- <h1 class="detail__title">Kanekalon Californiano Jumbo braid </h1> -->
+                        <span class="detail__price">$14.000</span>
+                        <p class="detail__description">Cabello sintetico para trenzas marca jumbo brais.</p>
+                        <div class="detail__">
+    
+                        </div>
+                    </div>
                 </div>
-                <div class="detail__summary">
-                    <h1 class="detail__title">Kanekalon Californiano Jumbo braid </h1>
-                    <span class="detail__price">$14.000</span>
-                    <p class="detail__description">Cabello sintetico para trenzas marca jumbo brais.</p>
+                <!-- section "recomendados, mas vendidos, productos vistos, etc" -->
+                <div class="detail__generals">
+                    
                 </div>
             </div>
-            <!-- section "recomendados, mas vendidos, productos vistos, etc" -->
-            <div class="detail__generals">
-                
-            </div>
-        </div>
+        </template>
     </BModal>
 </template>
 <style lang="scss" scoped>
 .detail {
-    overflow: hidden;
-    overflow-y: auto;  
-    border-radius: 10px;
-    // height: 100%;
+    // overflow: hidden;
+    // overflow-y: auto;
     width: 100%;
 }
-.detail::-webkit-scrollbar {
-    display: none;
-}
+// .detail::-webkit-scrollbar {
+//     display: none;
+// }
 .detail__content {
-    background: #fff;
-    border-radius: 10px;
-    padding: 40px 30px;
+    padding: 20px;
     display: grid;
     grid-gap: 30px;
     justify-items: center;
@@ -74,15 +79,18 @@ const closeModal = () => {
     height: 100%;
     object-fit: cover;
 }
-.detail__summary {
-}
 .detail__title {
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 28px;
-    line-height: 35px;
+    font-size: 20px;
+    line-height: 20px;
     color: #403300;
+}
+.detail__title--no-wrapper {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .detail__price {
     font-family: 'Roboto', sans-serif;
@@ -104,6 +112,10 @@ const closeModal = () => {
 @media (min-width: 576px) {
     .detail__content {
         grid-template-columns: 1fr 1fr;
+    }
+    .detail__title {
+        font-size: 28px;
+        line-height: 35px;
     }
 }
 </style>

@@ -12,6 +12,14 @@ defineProps({
     width: {
         type: String,
         default: '1200px'
+    },
+    headerHeight: {
+        type: String,
+        default: '80px'
+    },
+    modalHeaderTitle: {
+        type: String,
+        default: ''
     }
 })
 
@@ -25,12 +33,26 @@ const closeModal = () => {
     <div class="modal" v-if="show">
         <div class="modal__backdrop" :class="[`modal--${position}`]">
             <div class="modal__content" :class="[`modal__content--${position}`]">
-                <img 
-                    class="modal__close" 
-                    src="@/assets/icons/icon-close.svg" 
-                    alt="" 
-                    title="Cerrar"
-                    @click="closeModal">
+                
+                <div class="modal__header">
+                    <slot name="modalHeader"></slot>
+                    <!-- <h1 class="modal__header__title">{{ modalHeaderTitle }}</h1> -->
+                    <img 
+                        class="modal__close" 
+                        src="@/assets/icons/icon-close.svg" 
+                        alt="" 
+                        title="Cerrar"
+                        @click="closeModal"
+                    />
+
+                </div>
+                <div class="modal__body">
+                    <slot name="modalBody"></slot>
+                </div>
+                <div class="modal__footer">
+                    <slot name="modalFooter"></slot>
+                </div>
+                
                 <slot></slot>
             </div>
         </div>
@@ -60,6 +82,9 @@ const closeModal = () => {
     padding: 0;
 }
 .modal__content {
+    background: #fff;
+    overflow: hidden;
+    border-radius: 10px;
     position: relative;
     width: 100%;
     max-width: v-bind(width);
@@ -70,12 +95,34 @@ const closeModal = () => {
     justify-content: center;
     align-items: flex-start;
 }
-.modal__close {
+.modal__header {
     position: absolute;
-    top: 18px;
-    right: 20px;
-    cursor: pointer;
+    top: 0;
+    left: 0;
+    background: #ffffff;
+    width: 100%;
+    height: v-bind(headerHeight);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    border-bottom: 1px solid #D9D9D9;
 }
+.modal__close {
+    cursor: pointer;
+    margin-left: 10px;
+}
+.modal__body {
+    margin-top: v-bind(headerHeight);
+    overflow: hidden;
+    overflow-y: auto;
+    height: 100%;
+    width: 100%;
+}
+.modal__body::-webkit-scrollbar {
+    display: none;
+}
+// .modal__footer {}
 
 @media (min-width: 576px) {
     .modal--top {
