@@ -24,6 +24,7 @@ const hideModalFilter = () => {
         v-show="modalFilterShow"
     >
         <div class="filters">
+            <h1 class="filters__title">Filtrar por:</h1>
             <section class="filters__accordion">
                 <label for="accordion__check1">
                     <header class="filters__accordion__header">
@@ -78,6 +79,14 @@ const hideModalFilter = () => {
     z-index: 9;
     border-radius: 5px;
     overflow: hidden;
+}
+.filters__title {
+    padding: 16px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    color: #000000;
 }
 .filters__accordion {
     border-top: 1px solid #C6C6C6;

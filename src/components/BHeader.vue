@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useRouter } from 'vue-router';
 import BButton from '@/components/BButton.vue';
-import BCart from '@/components/BCart.vue';
+import BCart from '@/components/cart/BCart.vue';
 import BLogo from '@/components/BLogo.vue';
 import BSearch from '@/components/BSearch.vue';
 import BContent from './layouts/BContent.vue';
