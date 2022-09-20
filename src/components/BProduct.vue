@@ -45,6 +45,7 @@ const showDetail = () => {
     border-radius: 8px;
     background: #ffffff;
     overflow: hidden;
+    cursor: pointer;
 }
 .product__wrapper-image {
     width: 100%;

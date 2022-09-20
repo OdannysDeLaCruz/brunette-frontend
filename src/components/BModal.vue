@@ -71,6 +71,16 @@ const closeModal = () => {
     align-items: flex-start;
     padding: 0;
 }
+.modal--full-left {
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+}
+.modal--full-right {
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0;
+}
 .modal__backdrop {
     background: rgba(0,0,0, .5);
     position: absolute;

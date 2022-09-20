@@ -1,35 +1,14 @@
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
 import BProductFluid from '@/components/BProductFluid.vue';
 import BBreadCrumb from '@/components/BBreadCrumb.vue';
 import BModalFilter from '../components/menus/filters/BModalFilter.vue';
 import BProductDetail from '@/components/BProductDetail.vue';
-import { watch } from 'vue';
+import { useProductDetail } from '@/services/useProductDetail'
+
+const { productDetail, closeDetail } = useProductDetail()
+
 const route = useRoute()
-const router = useRouter()
-const productDetail = ref()
-
-const setProductDetail = () => {
-    if (route.query.productDetail) {
-        productDetail.value = Number(route.query.productDetail)
-    }
-}
-
-onMounted(() => {
-    setProductDetail()
-})
-
-watch(route, () => {
-    setProductDetail()
-})
-
-const closeDetail = () => {
-    productDetail.value = null
-    router.replace({
-        query: undefined
-    })
-}
 </script>
 
 <template>

@@ -1,12 +1,15 @@
 <script lang="ts" setup>
+import { ref } from 'vue';
+import { useRoute } from 'vue-router';
 import BCarouselCategories from '@/components/BCarouselCategories.vue'
 import BBanner from '@/components/BBanner.vue'
 import BPaymentMethodsList from '@/components/payment/BPaymentMethodsList.vue';
 import BCarouselProducts from '@/components/BCarouselProducts.vue';
-import { onMounted, ref, watch } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
 import BContent from '@/components/layouts/BContent.vue';
 import BProductDetail from '@/components/BProductDetail.vue';
+import { useProductDetail } from '@/services/useProductDetail'
+
+const { productDetail, closeDetail } = useProductDetail()
 
 const products: any = ref([
     {
@@ -42,29 +45,7 @@ const products: any = ref([
 ])
 
 const route = useRoute()
-const router = useRouter()
-const productDetail = ref()
 
-const setProductDetail = () => {
-    if (route.query.productDetail) {
-        productDetail.value = Number(route.query.productDetail)
-    }
-}
-
-onMounted(() => {
-    setProductDetail()
-})
-
-watch(route, () => {
-    setProductDetail()
-})
-
-const closeDetail = () => {
-    productDetail.value = null
-    router.replace({
-        query: undefined
-    })
-}
 </script>
 <template>
 

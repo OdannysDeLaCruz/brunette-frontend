@@ -35,7 +35,6 @@ const onIncrease = () => {
         width="850px"
         :show="productDetail ? true : false"
         @closeModal="closeModal"
-        modalHeaderTitle="Kanekalon Californiano Jumbo braid"
     >
         <template v-slot:modalHeader>
             <h1 class="detail__title detail__title--no-wrapper">Kanekalon Californiano Jumbo braid </h1>
