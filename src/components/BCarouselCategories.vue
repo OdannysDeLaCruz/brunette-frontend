@@ -34,7 +34,9 @@ onMounted(() => {
                     :key="index"
                     class="category"
                 >
-                    <span class="category__name"> {{ category.name }}</span>
+                    <router-link :to="`/categories/${category.name}`">
+                        <span class="category__name"> {{ category.name }}</span>
+                    </router-link>
                 </div>
             </div>
         </div>
