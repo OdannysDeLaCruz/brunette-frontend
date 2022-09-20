@@ -2,13 +2,10 @@
 import { defineProps } from 'vue';
 import BModal from '../BModal.vue';
 import BCartDetailItem from './BCartDetailItem.vue';
+import { useStore } from 'vuex';
 
-defineProps({
-    showCart: {
-        type: Boolean,
-        default: true
-    }
-})
+const store = useStore()
+
 
 const products = [
     {
@@ -26,13 +23,18 @@ const products = [
         quantity: 4,
     },
 ]
+const handleShowCart = () => {
+    store.commit('cart/handleShowCart')
+}
+
 </script>
 
 <template>
     <BModal 
         position="full-right"
         width="407px"
-        :show="showCart"
+        :show="store.state.cart.showCart"
+        @closeModal="handleShowCart"
     >
         <template v-slot:modalHeader>
             <h1 class="cart__title">Mis productos</h1>
