@@ -60,7 +60,7 @@ defineProps({
                 v-for="product in products" 
                 :key="product.id"
             >
-                <BProduct :name="product.name" :price="product.price" />
+                <BProduct :id="product.id" :name="product.name" :price="product.price" />
             </slide>
         </carousel>
     </div>
