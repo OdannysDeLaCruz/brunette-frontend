@@ -52,8 +52,6 @@ const closeModal = () => {
                 <div class="modal__footer">
                     <slot name="modalFooter"></slot>
                 </div>
-                
-                <slot></slot>
             </div>
         </div>
     </div>
@@ -65,6 +63,7 @@ const closeModal = () => {
     right: 0;
     bottom: 0;
     left: 0;
+    z-index: 9;
 }
 .modal--full {
     justify-content: center;
@@ -133,7 +132,20 @@ const closeModal = () => {
 .modal__body::-webkit-scrollbar {
     display: none;
 }
-// .modal__footer {}
+.modal__footer {
+    outline: 1px solid;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #ffffff;
+    width: 100%;
+    height: v-bind(headerHeight);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    border-bottom: 1px solid #D9D9D9;
+}
 
 @media (min-width: 576px) {
     .modal--top {

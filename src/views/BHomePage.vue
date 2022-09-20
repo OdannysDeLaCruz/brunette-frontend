@@ -87,7 +87,7 @@ const route = useRoute()
 .section__carousel-categories {
     position: sticky;
     top: 0;
-    z-index: 9;
+    z-index: 5;
 }
 .section__banner-main {
     margin-top: 30px;

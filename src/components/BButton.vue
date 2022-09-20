@@ -19,14 +19,8 @@ const props = defineProps({
       default: '0 17px'
     }
 })
-
-// const cssProps = computed(() => {
-//     return {
-//       '--border': props.border
-//     }
-// })
-
 </script>
+
 <template>
     <button
         class="button"
