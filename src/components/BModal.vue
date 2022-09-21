@@ -31,12 +31,10 @@ const closeModal = () => {
 </script>
 <template>
     <div class="modal" v-if="show">
-        <div class="modal__backdrop" :class="[`modal--${position}`]">
+        <div class="modal__backdrop" :class="[`modal--${position}`]" @click.self="closeModal">
             <div class="modal__content" :class="[`modal__content--${position}`]">
-                
                 <div class="modal__header">
                     <slot name="modalHeader"></slot>
-                    <!-- <h1 class="modal__header__title">{{ modalHeaderTitle }}</h1> -->
                     <img 
                         class="modal__close" 
                         src="@/assets/icons/icon-close.svg" 
@@ -133,18 +131,15 @@ const closeModal = () => {
     display: none;
 }
 .modal__footer {
-    outline: 1px solid;
     position: absolute;
     bottom: 0;
     left: 0;
     background: #ffffff;
     width: 100%;
-    height: v-bind(headerHeight);
+    min-height: v-bind(headerHeight);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px;
-    border-bottom: 1px solid #D9D9D9;
 }
 
 @media (min-width: 576px) {

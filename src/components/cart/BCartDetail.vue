@@ -78,8 +78,11 @@ const handleShowCart = () => {
 }
 .cart__footer {
     display: grid;
+    width: 100%;
     grid-template-columns: 1fr 1fr;
     grid-gap: 13px;
+    padding: 16px;
+    border-top: 1px solid #D9D9D9;
 }
 .cart__button-whatsapp {
     display: flex;
