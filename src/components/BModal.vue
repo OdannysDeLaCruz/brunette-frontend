@@ -31,12 +31,10 @@ const closeModal = () => {
 </script>
 <template>
     <div class="modal" v-if="show">
-        <div class="modal__backdrop" :class="[`modal--${position}`]">
+        <div class="modal__backdrop" :class="[`modal--${position}`]" @click.self="closeModal">
             <div class="modal__content" :class="[`modal__content--${position}`]">
-                
                 <div class="modal__header">
                     <slot name="modalHeader"></slot>
-                    <!-- <h1 class="modal__header__title">{{ modalHeaderTitle }}</h1> -->
                     <img 
                         class="modal__close" 
                         src="@/assets/icons/icon-close.svg" 
@@ -52,8 +50,6 @@ const closeModal = () => {
                 <div class="modal__footer">
                     <slot name="modalFooter"></slot>
                 </div>
-                
-                <slot></slot>
             </div>
         </div>
     </div>
@@ -65,6 +61,7 @@ const closeModal = () => {
     right: 0;
     bottom: 0;
     left: 0;
+    z-index: 9;
 }
 .modal--full {
     justify-content: center;
@@ -133,7 +130,17 @@ const closeModal = () => {
 .modal__body::-webkit-scrollbar {
     display: none;
 }
-// .modal__footer {}
+.modal__footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #ffffff;
+    width: 100%;
+    min-height: v-bind(headerHeight);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
 @media (min-width: 576px) {
     .modal--top {
