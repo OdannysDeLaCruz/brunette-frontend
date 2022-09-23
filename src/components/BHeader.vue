@@ -21,14 +21,25 @@ const router = useRouter()
                     <BSearch />
                 </div>  
                 <div class="header__nav">
+                    <BCart color="black" class="header__cart" />
+                    <img class="header__nav__open" src="@/assets/icons/icon-hamburger.svg" alt="Open nav">
                     <nav class="nav">
-                        <div class="header__search--small">
-                            <img src="@/assets/icons/icon-search.svg" alt="">
-                        </div>
-                        <BCart />
-                        <!-- <div class="separator"></div> -->
-                        <!-- <BButton @click="router.push({ name: 'Register' })"> Registrarse </BButton> -->
-                        <!-- <BButton mode="orange"> Ingresar </BButton> -->
+                        <div class="separator"></div>
+                        <BButton 
+                            bg="#ffffff" 
+                            border="1px solid #808080" 
+                            class="header__button-register"
+                            @click="router.push({ name: 'Register' })"
+                        > 
+                            Registrarse
+                        </BButton>
+                        <BButton 
+                            bg="#FFCC00" 
+                            color="#ffffff"
+                            class="header__button-login"
+                        > 
+                            Ingresar
+                        </BButton>
                     </nav>
                 </div>
             </div>
@@ -39,11 +50,13 @@ const router = useRouter()
 .content-custom {
     background: #ffffff;
 }
+
 .header {
     padding: 16px 18px;
     border-bottom: 1px solid #F4F4F4;
     background: #ffffff;
 }
+
 .header__wrapper {
     display: flex;
     justify-content: space-between;
@@ -63,21 +76,29 @@ const router = useRouter()
     align-items: center;
 }
 
-.nav {
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    // grid-gap: 0 15px;
-    align-items: center;
+.header__cart {
+    width: 25px;
+    height: 26px;
+}
+
+.header__nav__open {
+    display: block;
+    cursor: pointer;
+    margin-left: 15px;
 }
 
 .separator {
     height: 70%;
     border-right: 1px solid #cccccc;
+    margin-inline: 15px;
 }
 
-.header__search--full {
+.nav {
     display: none;
+    grid-template-columns: repeat(4, auto);
+    align-items: center;
 }
+
 .header__search--small {
     display: block;
     display: flex;
@@ -90,12 +111,17 @@ const router = useRouter()
     width: 23px;
 }
 
-@media (min-width: 576px) {
-    .header__search--full {
-        display: block;
-    }
-    .header__search--small {
+.header__button-login {
+    margin-left: 15px;
+}
+
+@media (min-width: 768px) {
+    .header__nav__open {
         display: none;
+    }
+
+    .nav {
+        display: grid;
     }
 }
 </style>
