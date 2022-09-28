@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { defineProps } from 'vue';
 import 'vue3-carousel/dist/carousel.css';
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
-import 'vue3-carousel/dist/carousel.css';
+import { Carousel, Slide, Navigation } from 'vue3-carousel';
 import BProduct from '@/components/BProduct.vue';
 
 const breakpoints = {
@@ -23,7 +22,7 @@ const breakpoints = {
         snapAlign: 'start',
     },
     1024: {
-        itemsToShow: 5.2,
+        itemsToShow: 5,
         snapAlign: 'start',
     },
 }
@@ -44,6 +43,7 @@ defineProps({
         }
     }
 })
+
 </script>
 <template>
     <div class="carousel-product">
@@ -62,6 +62,9 @@ defineProps({
             >
                 <BProduct :id="product.id" :name="product.name" :price="product.price" />
             </slide>
+            <template #addons>
+                <navigation />
+            </template>
         </carousel>
     </div>
 </template>
