@@ -12,7 +12,7 @@ defineProps({
 </script>
 
 <template>
-    <li class="cart-item">
+    <div class="cart-item">
         <div class="cart-item__wrapper-image">
             <img class="cart-item__image" src="@/assets/images/kanekalon.jpeg" :alt="product.name">
         </div>
@@ -20,27 +20,34 @@ defineProps({
             <div class="cart-item__content__wrapper">
                 <h1 class="cart-item__name">{{ product.name }}</h1>
                 <div class="cart-item__prices">
-                    <span class="cart-item__prices__item cart-item__prices__new">{{ product.oldPrice }}</span>
                     <span class="cart-item__prices__item cart-item__prices__old">{{ product.price }}</span>
+                    <span class="cart-item__prices__item cart-item__prices__new">{{ product.oldPrice }}</span>
+                </div>
+                <div class="cart-item__options">
+                    <span class="cart-item__options__item cart-item__options__item--color-red">Remove</span>
                 </div>
             </div>
-            <div class="cart-item__options">
+            <div class="cart-item__control-quantity">
                 <BControlQuantity :quantity="product.quantity" />
             </div>
         </div>
-    </li>
+    </div>
 </template>
 
 <style lang="scss" scoped>
 .cart-item {
     padding: 16px;
+    height: 120px;
     display: flex;
-    border-bottom: 1px solid #E3E3E3;
+    border-radius: 4px;
+    background: #fff;
 }
 .cart-item__wrapper-image {
-    width: 70px;
-    height: 70px;
-    margin-right: 15px;
+    width: 90px;
+    height: 90px;
+    margin-right: 20px;
+    border-radius: 4px;
+    overflow: hidden;
 }
 .cart-item__image {
     width: 100%;
@@ -49,7 +56,7 @@ defineProps({
 }
 .cart-item__content {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr auto;
     width: 100%;
 }
 .cart-item__content__wrapper {
@@ -85,9 +92,19 @@ defineProps({
     color: #FFCC00;
 }
 .cart-item__options {
-    margin-left: auto;
+    margin-top: auto;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    align-items: center;
+}
+.cart-item__options__item {
+    cursor: pointer;
+}
+.cart-item__options__item--color-red {
+    color: #F28383;
+}
+.cart-item__control-quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 </style>

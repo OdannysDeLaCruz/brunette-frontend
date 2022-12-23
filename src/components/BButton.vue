@@ -17,45 +17,47 @@ const props = defineProps({
     padding: {
       type: String,
       default: '0 17px'
+    },
+    size: {
+      type: String,
+      default: 'medium'
     }
 })
 </script>
 
 <template>
-    <button
-        class="button"
-      > 
+    <button :class="['button', `button--${size}`]"> 
         <slot></slot>
     </button>
 </template>
 
 <style lang="scss" scoped>
 .button {
-  padding: v-bind(padding);
   border-radius: 5px;
   border: v-bind(border);
-  font-weight: 600;
-  min-height: 30px;
   background: v-bind(bg);
   color: v-bind(color);
 }
 .button:hover {
   cursor: pointer;
 }
-// .button--orange {
-//   background: #ffcc00;
-//   border: 1px solid #ffcc00;
-//   color: #ffffff;
-// }
-
-// .button--white {
-//   background: #ffffff;
-//   border: 1px solid #000000;
-//   color: #000000;
-// }
-
-// // Border
-// .button--border {
-//   border: var(--border);
-// }
+// Size
+.button--small {
+  padding: 16px 16px;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+}
+.button--medium {
+  padding: 16px 20px;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 600;
+}
+.button--large {
+  padding: 16px 30px;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 600;
+}
 </style>

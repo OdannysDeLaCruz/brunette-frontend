@@ -41,8 +41,8 @@ const handleShowCart = () => {
             <h1 class="cart__title">Mis productos</h1>
         </template>
         <template v-slot:modalBody>
-            <ul class="cart__list">
-                <li class="cart__item">
+            <ul>
+                <li>
                     <BCartDetailItem 
                         v-for="product in products"
                         :key="product.id"

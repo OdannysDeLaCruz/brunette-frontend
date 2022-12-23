@@ -24,9 +24,35 @@ const routes: Array<RouteRecordRaw> = [
       ]
   },
   {
+    path: '/login',
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "login" */ '../views/BLoginPage.vue')
+  },
+  {
     path: '/register',
     name: 'Register',
     component: () => import(/* webpackChunkName: "register" */ '../views/BRegisterPage.vue')
+  },
+  {
+    path: '/purchasing',
+    redirect: '/purchasing/cart'
+  },
+  {
+    path: '/purchasing',
+    name: 'Purchasing',
+    component: () => import(/* webpackChunkName: "purchasing" */ '../views/purchasing/BPurchasingPage.vue'),
+    children: [
+        {
+            path: 'cart',
+            name: 'Cart',
+            component: () => import(/* webpackChunkName: "cart" */ '../views/purchasing/BCartPage.vue')
+        },
+        {
+            path: '/shipping-address',
+            name: 'ShippingAddress',
+            component: () => import(/* webpackChunkName: "shipping-address" */ '../views/purchasing/BShippingAddressPage.vue')
+        },
+    ]
   },
   {
     path: '/:pathMatch(.*)*',

@@ -1,18 +1,16 @@
 <script lang="ts" setup>
-import { useRouter } from 'vue-router';
 import BButton from '@/components/BButton.vue';
 import BCart from '@/components/cart/BCart.vue';
 import BLogo from '@/components/BLogo.vue';
 import BSearch from '@/components/BSearch.vue';
+import BNav from '@/components/menus/BNav.vue';
 import BContent from './layouts/BContent.vue';
-
-const router = useRouter()
 </script>
 <template>
     <BContent class="content-custom">
         <header class="header">
             <div class="header__wrapper">
-                <div class="header__logo" @click="router.push({ name: 'Home' })">
+                <div class="header__logo">
                     <router-link to="/home">
                         <BLogo class="header__logo-image" />
                     </router-link>
@@ -22,25 +20,8 @@ const router = useRouter()
                 </div>  
                 <div class="header__nav">
                     <BCart color="black" class="header__cart" />
-                    <img class="header__nav__open" src="@/assets/icons/icon-hamburger.svg" alt="Open nav">
-                    <nav class="nav">
-                        <div class="separator"></div>
-                        <BButton 
-                            bg="#ffffff" 
-                            border="1px solid #808080" 
-                            class="header__button-register"
-                            @click="router.push({ name: 'Register' })"
-                        > 
-                            Registrarse
-                        </BButton>
-                        <BButton 
-                            bg="#FFCC00" 
-                            color="#ffffff"
-                            class="header__button-login"
-                        > 
-                            Ingresar
-                        </BButton>
-                    </nav>
+                    <img class="header__nav__open" src="@/assets/icons/icon-hamburger.svg" alt="Open nav" @click="">
+                    <BNav />
                 </div>
             </div>
         </header>
@@ -87,18 +68,6 @@ const router = useRouter()
     margin-left: 15px;
 }
 
-.separator {
-    height: 70%;
-    border-right: 1px solid #cccccc;
-    margin-inline: 15px;
-}
-
-.nav {
-    display: none;
-    grid-template-columns: repeat(4, auto);
-    align-items: center;
-}
-
 .header__search--small {
     display: block;
     display: flex;
@@ -111,17 +80,9 @@ const router = useRouter()
     width: 23px;
 }
 
-.header__button-login {
-    margin-left: 15px;
-}
-
 @media (min-width: 768px) {
     .header__nav__open {
         display: none;
-    }
-
-    .nav {
-        display: grid;
     }
 }
 </style>
