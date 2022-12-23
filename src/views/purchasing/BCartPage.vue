@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import BCartDetailItem from '@/components/cart/BCartDetailItem.vue'
-import BButton from "@/components/BButton.vue"
-import BContent from "@/components/layouts/BContent.vue"
+import BCartDetailItem from "@/components/cart/BCartDetailItem.vue";
+import BButton from "@/components/BButton.vue";
+import BContent from "@/components/layouts/BContent.vue";
+import BPurchasingProcessResume from "./components/BPurchasingProcessResume.vue";
 
 const products = [
     {
@@ -32,22 +33,23 @@ const products = [
         price: 3700,
         quantity: 4,
     },
-]
+];
 </script>
 <template>
     <section class="cart-page">
         <h1 class="cart-page__title">Carrito</h1>
         <ul class="cart-page__list">
-            <li 
-                class="cart-page__item" 
-                v-for="product in products" 
+            <li
+                class="cart-page__item"
+                v-for="product in products"
                 :key="product.id"
             >
-                <BCartDetailItem 
-                    :product="product"
-                />
+                <BCartDetailItem :product="product" />
             </li>
         </ul>
+    </section>
+    <section>
+        <BPurchasingProcessResume />
     </section>
 </template>
 <style lang="scss" scoped>
