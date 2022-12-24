@@ -17,7 +17,9 @@ const paymentMethodsList = [
         image: 'transferencia.svg'
     },
 ]
-
+const getImage = ( image: string ) => {
+    return new URL(`../../assets/icons/payments/${image}`, import.meta.url).href
+}
 </script>
 <template>
     <div class="payment-method-list">
@@ -30,7 +32,7 @@ const paymentMethodsList = [
                 :subtitle="paymentMethod.subtitle"
             >
                 <template v-slot:paymentMethodImage>
-                    <img :src="require('@/assets/icons/payments/' + paymentMethod.image )" :alt="paymentMethod.title">
+                    <img :src="getImage(paymentMethod.image)" :alt="paymentMethod.title">
                 </template>
             </BPaymentMethod>
         </div>

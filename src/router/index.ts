@@ -4,34 +4,34 @@ const routes: Array<RouteRecordRaw> = [
   // {
   //   path: '/',
   //   name: 'Landing',
-  //   component: () => import(/* webpackChunkName: "landing" */ '../views/Landing.vue')
+  //   component: () => import('../views/Landing.vue')
   // },
   {
     path: '/home',
     name: 'Home',
-    component: () => import(/* webpackChunkName: "home" */ '../views/BHomePage.vue')
+    component: () => import('../views/BHomePage.vue')
   },
   {
       path: '/categories/:category',
       name: 'Categories',
-      component: () => import(/* webpackChunkName: "categories" */ '../views/BCategoriesPage.vue'),
+      component: () => import('../views/BCategoriesPage.vue'),
       children: [
           {
               path: '',
               name: 'Category',
-              component: () => import(/* webpackChunkName: "category" */ '../views/BCategoryPage.vue')
+              component: () => import('../views/BCategoryPage.vue')
           }
       ]
   },
   {
     path: '/login',
     name: 'Login',
-    component: () => import(/* webpackChunkName: "login" */ '../views/BLoginPage.vue')
+    component: () => import('../views/BLoginPage.vue')
   },
   {
     path: '/register',
     name: 'Register',
-    component: () => import(/* webpackChunkName: "register" */ '../views/BRegisterPage.vue')
+    component: () => import('../views/BRegisterPage.vue')
   },
   {
     path: '/purchasing',
@@ -40,29 +40,29 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/purchasing',
     name: 'Purchasing',
-    component: () => import(/* webpackChunkName: "purchasing" */ '../views/purchasing/BPurchasingPage.vue'),
+    component: () => import('../views/purchasing/BPurchasingPage.vue'),
     children: [
         {
             path: 'cart',
             name: 'Cart',
-            component: () => import(/* webpackChunkName: "cart" */ '../views/purchasing/BCartPage.vue')
+            component: () => import('../views/purchasing/BCartPage.vue')
         },
         {
             path: '/shippingAddress',
             name: 'ShippingAddress',
-            component: () => import(/* webpackChunkName: "shipping-address" */ '../views/purchasing/BShippingAddressPage.vue')
+            component: () => import('../views/purchasing/BShippingAddressPage.vue')
         },
     ]
   },
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
-    component: () => import(/* webpackChunkName: "not_found" */ '../views/error/BNotFoundPage.vue')
+    component: () => import('../views/error/BNotFoundPage.vue')
   }
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes
 })
 
