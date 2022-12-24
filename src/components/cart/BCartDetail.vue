@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { defineProps } from 'vue';
 import BModal from '../BModal.vue';
 import BCartDetailItem from './BCartDetailItem.vue';
 import { useStore } from 'vuex';

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { defineProps, computed } from "vue"
+import { computed } from "vue"
 import BModal from "@/components/BModal.vue"
 import BButton from '@/components/BButton.vue';
 import BControlQuantity from "@/components/BControlQuantity.vue";

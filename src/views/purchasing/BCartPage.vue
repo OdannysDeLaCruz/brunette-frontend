@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script lang="ts" setup >
 import BCartDetailItem from "@/components/cart/BCartDetailItem.vue";
 import BPurchasingProcessResume from "./components/BPurchasingProcessResume.vue";
 import BPurchasingTitle from "./components/BPurchasingTitle.vue";
