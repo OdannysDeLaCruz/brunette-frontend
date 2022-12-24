@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import BCartDetailItem from "@/components/cart/BCartDetailItem.vue";
-import BButton from "@/components/BButton.vue";
-import BContent from "@/components/layouts/BContent.vue";
 import BPurchasingProcessResume from "./components/BPurchasingProcessResume.vue";
+import BPurchasingTitle from "./components/BPurchasingTitle.vue";
 
 const products = [
     {
@@ -37,7 +36,9 @@ const products = [
 </script>
 <template>
     <section class="cart-page">
-        <h1 class="cart-page__title">Carrito</h1>
+        
+        <BPurchasingTitle />
+        
         <ul class="cart-page__list">
             <li
                 class="cart-page__item"
@@ -48,17 +49,9 @@ const products = [
             </li>
         </ul>
     </section>
-    <section>
-        <BPurchasingProcessResume />
-    </section>
+    <BPurchasingProcessResume />
 </template>
 <style lang="scss" scoped>
-.cart-page {
-    max-width: 1000px;
-    margin: 24px auto;
-    background: rgba(255, 255, 255, 0.5);
-    padding: 25px 30px;
-}
 .cart-page__title {
     margin-bottom: 30px;
     font-style: normal;

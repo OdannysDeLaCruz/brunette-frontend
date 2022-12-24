@@ -14,6 +14,6 @@ import BContent from "@/components/layouts/BContent.vue";
     max-width: 1000px;
     margin: 24px auto;
     background: rgba(255, 255, 255, 0.5);
-    padding: 25px 30px;
+    padding: 30px 30px;
 }
 </style>

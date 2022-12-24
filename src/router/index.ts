@@ -48,7 +48,7 @@ const routes: Array<RouteRecordRaw> = [
             component: () => import(/* webpackChunkName: "cart" */ '../views/purchasing/BCartPage.vue')
         },
         {
-            path: '/shipping-address',
+            path: '/shippingAddress',
             name: 'ShippingAddress',
             component: () => import(/* webpackChunkName: "shipping-address" */ '../views/purchasing/BShippingAddressPage.vue')
         },
