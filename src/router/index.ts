@@ -52,6 +52,11 @@ const routes: Array<RouteRecordRaw> = [
             name: 'ShippingAddress',
             component: () => import('../views/purchasing/BShippingAddressPage.vue')
         },
+        {
+            path: 'paymentMethod',
+            name: 'PaymentMethod',
+            component: () => import('../views/purchasing/BPaymentMethodPage.vue')
+        },
     ]
   },
   {
