@@ -11,7 +11,6 @@
             bg="#FFCC00" 
             color="#403300" 
             size="large"
-            @click="nextPage"
         >
             Continuar
         </BButton>

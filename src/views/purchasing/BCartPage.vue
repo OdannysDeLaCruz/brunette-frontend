@@ -1,6 +1,6 @@
 <script lang="ts" setup >
 import BCartDetailItem from "@/components/cart/BCartDetailItem.vue";
-import BPurchasingProcessResume from "./components/BPurchasingProcessResume.vue";
+import BPurchasingProcessResumen from "./components/BPurchasingProcessResumen.vue";
 import BPurchasingTitle from "./components/BPurchasingTitle.vue";
 
 const products = [
@@ -37,7 +37,7 @@ const products = [
 <template>
     <section class="cart-page">
         
-        <BPurchasingTitle />
+        <BPurchasingTitle title="Carrito" />
         
         <ul class="cart-page__list">
             <li
@@ -49,7 +49,7 @@ const products = [
             </li>
         </ul>
     </section>
-    <BPurchasingProcessResume />
+    <BPurchasingProcessResumen />
 </template>
 <style lang="scss" scoped>
 .cart-page__title {

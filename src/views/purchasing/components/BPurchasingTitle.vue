@@ -1,10 +1,12 @@
 <script lang="ts" setup>
 interface Props {
-    title?: string
+    title?: string,
+    align?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
     title: 'Hola',
+    align: 'left'
 })
 </script>
 <template>
@@ -18,5 +20,6 @@ const props = withDefaults(defineProps<Props>(), {
     font-size: 22px;
     line-height: 17px;
     color: #000000;
+    text-align: v-bind(align);
 }
 </style>
