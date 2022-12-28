@@ -2,21 +2,30 @@
 import { ref } from "vue";
 import BPurchasingProcessResumen from "./components/BPurchasingProcessResumen.vue";
 import BPurchasingTitle from "./components/BPurchasingTitle.vue";
-import BRadioCard from "@/components/inputs/BRadioCard.vue";
 import BPurchasingSegment from "./components/BPurchasingSegment.vue";
+import BRadioCardCompact from "@/components/inputs/BRadioCardCompact.vue";
 
-const addresses = ref([
+const paymentList = ref([
     {
         id: 1,
-        address: 'Calle 6b # 41 - 36',
-        additional: 'La Nevada'
+        name: 'Transferencia Bancaría',
+        image: 'https://picsum.photos/200/200?random=1'
     },
     {
         id: 2,
-        address: 'Calle 6b # 41 - 36',
-        additional: 'La Nevada'
+        name: 'Efectivo',
+        image: 'https://picsum.photos/200/200?random=2'
+    },
+    {
+        id: 3,
+        name: 'Nequi',
+        image: 'https://picsum.photos/200/200?random=3'
     }
 ])
+
+const handleSelected = (id: string): void => {
+    console.log('id emitted', id)
+}
 
 </script>
 <template>
@@ -28,10 +37,15 @@ const addresses = ref([
                 <ul class="payment__method__list">
                     <li 
                         class="payment__method__list-item"
-                        v-for="address in addresses"
-                        :key="address.id"
+                        v-for="payment in paymentList"
+                        :key="payment.id"
                     >
-                       
+                       <BRadioCardCompact 
+                            :id="payment.id" 
+                            :name="payment.name" 
+                            :image="payment.image" 
+                            @selected="handleSelected" 
+                        />
                     </li>
                 </ul>
             </template>
@@ -47,5 +61,9 @@ const addresses = ref([
     width: 100%;
     max-width: 440px;
     margin: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 20px;
 }
 </style>
