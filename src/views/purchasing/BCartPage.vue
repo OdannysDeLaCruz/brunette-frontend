@@ -49,7 +49,7 @@ const products = [
             </li>
         </ul>
     </section>
-    <BPurchasingProcessResumen />
+    <BPurchasingProcessResumen buttonText="Continuar" />
 </template>
 <style lang="scss" scoped>
 .cart-page__title {

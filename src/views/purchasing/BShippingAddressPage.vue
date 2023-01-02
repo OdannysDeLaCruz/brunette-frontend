@@ -8,15 +8,19 @@ import BPurchasingSegment from "./components/BPurchasingSegment.vue";
 const addresses = ref([
     {
         id: 1,
-        address: 'Calle 6b # 41 - 36',
+        name: 'Calle 6b # 41 - 36',
         additional: 'La Nevada'
     },
     {
         id: 2,
-        address: 'Calle 6b # 41 - 36',
+        name: 'Calle 6b # 41 - 36',
         additional: 'La Nevada'
     }
 ])
+
+const handleSelected = (id: string): void => {
+    console.log('id emitted', id)
+}
 
 </script>
 <template>
@@ -32,9 +36,9 @@ const addresses = ref([
                         :key="address.id"
                     >
                         <BRadioCard 
-                            :address="address.address" 
-                            :additional="address.additional"
+                            :address="address"
                             inputName="address"
+                            @selected="handleSelected"
                         >
                             <template v-slot:radioCardIcon>
                                 <img src="@/assets/icons/icon-pin-map.svg" alt="Pin">
@@ -52,7 +56,7 @@ const addresses = ref([
             Agrear nueva dirección
         </button>
     </section>
-    <BPurchasingProcessResumen />
+    <BPurchasingProcessResumen buttonText="Continuar" />
 </template>
 <style lang="scss" scoped>
 

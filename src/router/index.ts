@@ -48,6 +48,11 @@ const routes: Array<RouteRecordRaw> = [
             component: () => import('../views/purchasing/BCartPage.vue')
         },
         {
+            path: 'shippingMethod',
+            name: 'ShippingMethod',
+            component: () => import('../views/purchasing/BShippingMethodPage.vue')
+        },
+        {
             path: 'shippingAddress',
             name: 'ShippingAddress',
             component: () => import('../views/purchasing/BShippingAddressPage.vue')
@@ -58,9 +63,9 @@ const routes: Array<RouteRecordRaw> = [
             component: () => import('../views/purchasing/BPaymentMethodPage.vue')
         },
         {
-            path: 'shippingMethod',
-            name: 'ShippingMethod',
-            component: () => import('../views/purchasing/BShippingMethodPage.vue')
+            path: 'finalizingOrder',
+            name: 'FinalizingOrder',
+            component: () => import('../views/purchasing/BFinalizingOrderPage.vue')
         },
     ]
   },

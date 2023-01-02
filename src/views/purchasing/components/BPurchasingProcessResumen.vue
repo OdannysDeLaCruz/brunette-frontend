@@ -2,7 +2,14 @@
 import { useRouter } from "vue-router";
 import BButton from "@/components/BButton.vue";
 
-const router = useRouter();
+interface Props {
+    buttonText: string
+}
+
+withDefaults(defineProps<Props>(), {
+    buttonText: 'Button text'
+})
+
 </script>
 <template>
     <div class="purchasing-process__resumen">
@@ -24,7 +31,7 @@ const router = useRouter();
             color="#403300"
             size="large"
         >
-            Continuar
+            {{ buttonText }}
         </BButton>
     </div>
 </template>

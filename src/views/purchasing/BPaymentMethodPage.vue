@@ -34,24 +34,27 @@ const handleSelected = (id: string): void => {
         
         <BPurchasingSegment title="Formas de pago" subtitle="Selecciona una forma">
             <template v-slot:purchasingSegmentList>
-                <ul class="payment__method__list">
-                    <li 
-                        class="payment__method__list-item"
-                        v-for="payment in paymentList"
-                        :key="payment.id"
-                    >
-                       <BRadioCardCompact 
-                            :id="payment.id" 
-                            :name="payment.name" 
-                            :image="payment.image" 
-                            @selected="handleSelected" 
-                        />
-                    </li>
-                </ul>
+                <form action="">
+                    <ul class="payment__method__list">
+                        <li 
+                            class="payment__method__list-item"
+                            v-for="payment in paymentList"
+                            :key="payment.id"
+                        >
+                           <BRadioCardCompact 
+                                :id="payment.id" 
+                                :name="payment.name" 
+                                :image="payment.image" 
+                                inputName="payment"
+                                @selected="handleSelected" 
+                            />
+                        </li>
+                    </ul>
+                </form>
             </template>
         </BPurchasingSegment>
     </section>
-    <BPurchasingProcessResumen />
+    <BPurchasingProcessResumen buttonText="Continuar" />
 </template>
 <style lang="scss" scoped>
 .payment__method__title {

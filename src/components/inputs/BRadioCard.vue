@@ -1,28 +1,45 @@
 <script lang="ts" setup>
-interface Props {
-    address?: string,
+import { ref } from 'vue'
+import type { PropType } from 'vue'
+
+interface Address {
+    id: number,
+    name: string,
     additional?: string
-    inputName: string
 }
 
-withDefaults(defineProps<Props>(), {
-    address: '',
-    additional: ''
+const props = defineProps({
+    address: {
+        type: Object as PropType<Address>,
+        require: true
+    },
+    inputName: {
+        type: String
+    }
 })
+
+const emits = defineEmits(['selected'])
+const inputNameRef = ref()
+
+const handleClick = () => {
+    emits('selected', props.address?.id)
+    inputNameRef.value.checked = true
+}
+
 </script>
 <template>
     <div class="radio-card">
-        <label class="radio-card__label">
+        <label class="radio-card__label" @click.prevent="handleClick">
             <div class="radio-card__wrapper">
                 <div class="radio-card__icon">
                     <slot name="radioCardIcon"></slot>
                 </div>
                 <div class="radio-card__content">
-                    <span class="radio-card__title radio-card__title--medium">{{ address }}</span>
-                    <span class="radio-card__title radio-card__title--small"> {{ additional }}</span>
+                    <span class="radio-card__title radio-card__title--medium">{{ address?.name }}</span>
+                    <span class="radio-card__title radio-card__title--small"> {{ address?.additional }}</span>
                 </div>
                 <div class="radio-card__radio">
-                    <input class="radio-card__radio-input" type="radio" id="radioCardInput" :name="inputName" />
+                    <input class="radio-card__radio-input" type="radio" id="radioCardInput" :value="address?.id" :name="inputName" ref="inputNameRef" />
                 </div>
             </div>
         </label>
