@@ -20,16 +20,32 @@ const handleClick = () => {
 
 </script>
 <template>
-    <label class="payment-method__card" @click.prevent="handleClick">
-        <input class="payment-method__check" type="radio" :name="inputName" :value="id" ref="inputNameRef">
-        <div class="payment-method__wrapper">
-            <figure class="payment-method__figure">
-                <img class="payment-method__image" :src="image" alt="Payment method image">
-            </figure>
-            <p class="payment-method__text payment-method__title">{{ name }}</p>
-            <p class="payment-method__text payment-method__subtitle" v-if="additional">{{ additional }}</p>
-        </div>
-    </label>
+<label
+    class="payment-method__card"
+    @click.prevent="handleClick"
+>
+    <input
+        ref="inputNameRef"
+        class="payment-method__check"
+        type="radio"
+        :name="inputName"
+        :value="id"
+    >
+    <div class="payment-method__wrapper">
+        <figure class="payment-method__figure">
+            <img
+                class="payment-method__image"
+                :src="image"
+                alt="Payment method image"
+            >
+        </figure>
+        <p class="payment-method__text payment-method__title">{{ name }}</p>
+        <p
+            v-if="additional"
+            class="payment-method__text payment-method__subtitle"
+        >{{ additional }}</p>
+    </div>
+</label>
 </template>
 <style lang="scss" scoped>
 .payment-method__wrapper {

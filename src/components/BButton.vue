@@ -26,9 +26,9 @@ const props = defineProps({
 </script>
 
 <template>
-    <button :class="['button', `button--${size}`]"> 
-        <slot></slot>
-    </button>
+<button :class="['button', `button--${size}`]"> 
+    <slot />
+</button>
 </template>
 
 <style lang="scss" scoped>

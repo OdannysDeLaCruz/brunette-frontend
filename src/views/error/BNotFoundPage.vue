@@ -1,8 +1,10 @@
 <template>
-    <div class="error-page">
-        <span class="error-page__code">404</span>
-        <p class="error-page__message">Page Not Found</p> 
-    </div>
+<div class="error-page">
+    <span class="error-page__code">404</span>
+    <p class="error-page__message">
+        Page Not Found
+    </p> 
+</div>
 </template>
 <style lang="scss" scoped>
 .error-page {

@@ -14,36 +14,60 @@ const hideModalFilter = () => {
 
 </script>
 <template>
-    <button class="modal-filter__button" @click="showModalFilter">
-        Filtrar <img src="@/assets/icons/icon-chevron-bottom-blue.svg" alt="Botón filtrar">
-    </button>
-    
-    <div 
-        class="modal-filter__backdrop" 
-        @click.self="hideModalFilter"
-        v-show="modalFilterShow"
+<button
+    class="modal-filter__button"
+    @click="showModalFilter"
+>
+    Filtrar <img
+        src="@/assets/icons/icon-chevron-bottom-blue.svg"
+        alt="Botón filtrar"
     >
-        <div class="filters">
-            <h1 class="filters__title">Filtrar por:</h1>
-            <section class="filters__accordion">
-                <label for="accordion__check1">
-                    <header class="filters__accordion__header">
-                        <h2 class="filters__accordion__title">Categorias</h2>
-                        <img class="filters__accordion__icon" src="@/assets/icons/icon-chevron-bottom-gray.svg" alt="">
-                    </header>
-                </label>
-                <input type="checkbox" class="filters__accordion__check" id="accordion__check1">
-                <section class="filters__accordion__body">
-                    <ul class="navigation__list">
-                        <BMainCategoriesItem text="Kanekalon" linkPath="/categories/kanekalon" />
-                        <BMainCategoriesItem text="Lanapelo" linkPath="/categories/lanapelo" />
-                        <BMainCategoriesItem text="Microzizi" linkPath="/categories/microzizi" />
-                    </ul>
-                </section>
+</button>
+    
+<div 
+    v-show="modalFilterShow" 
+    class="modal-filter__backdrop"
+    @click.self="hideModalFilter"
+>
+    <div class="filters">
+        <h1 class="filters__title">
+            Filtrar por:
+        </h1>
+        <section class="filters__accordion">
+            <label for="accordion__check1">
+                <header class="filters__accordion__header">
+                    <h2 class="filters__accordion__title">Categorias</h2>
+                    <img
+                        class="filters__accordion__icon"
+                        src="@/assets/icons/icon-chevron-bottom-gray.svg"
+                        alt=""
+                    >
+                </header>
+            </label>
+            <input
+                id="accordion__check1"
+                type="checkbox"
+                class="filters__accordion__check"
+            >
+            <section class="filters__accordion__body">
+                <ul class="navigation__list">
+                    <BMainCategoriesItem
+                        text="Kanekalon"
+                        link-path="/categories/kanekalon"
+                    />
+                    <BMainCategoriesItem
+                        text="Lanapelo"
+                        link-path="/categories/lanapelo"
+                    />
+                    <BMainCategoriesItem
+                        text="Microzizi"
+                        link-path="/categories/microzizi"
+                    />
+                </ul>
             </section>
-        </div>
+        </section>
     </div>
-
+</div>
 </template>
 <style lang="scss" scoped>
 .modal-filter__button {

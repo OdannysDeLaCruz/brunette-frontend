@@ -26,31 +26,38 @@ const handleSelected = (id: string): void => {
 
 </script>
 <template>
-    <section class="shipping__method">
-        <BPurchasingTitle title="¿Como quieres recibir tu pedido?" align="center" class="shipping__method__title" />
-        
-        <BPurchasingSegment title="Formas de entrega" subtitle="Selecciona una forma">
-            <template v-slot:purchasingSegmentList>
-                <ul class="shipping__method__list">
-                    <li 
-                        class="shipping__method__list-item"
-                        v-for="shipping in shippingList"
-                        :key="shipping.id"
-                    >
-                       <BRadioCardCompact
-                            :id="shipping.id" 
-                            :name="shipping.name" 
-                            :image="shipping.image" 
-                            :additional="shipping.ammount && `+ ${shipping.ammount}`" 
-                            inputName="inputShippingMethod"
-                            @selected="handleSelected" 
-                        />
-                    </li>
-                </ul>
-            </template>
-        </BPurchasingSegment>
-    </section>
-    <BPurchasingProcessResumen buttonText="Continuar" />
+<section class="shipping__method">
+    <BPurchasingTitle
+        title="¿Como quieres recibir tu pedido?" 
+        align="center" 
+        class="shipping__method__title"
+    />
+            
+    <BPurchasingSegment
+        title="Formas de entrega"
+        subtitle="Selecciona una forma"
+    >
+        <template #purchasingSegmentList>
+            <ul class="shipping__method__list">
+                <li 
+                    v-for="shipping in shippingList"
+                    :key="shipping.id"
+                    class="shipping__method__list-item"
+                >
+                    <BRadioCardCompact
+                        :id="shipping.id" 
+                        :name="shipping.name" 
+                        :image="shipping.image" 
+                        :additional="shipping.ammount && `+ ${shipping.ammount}`" 
+                        input-name="inputShippingMethod"
+                        @selected="handleSelected" 
+                    />
+                </li>
+            </ul>
+        </template>
+    </BPurchasingSegment>
+</section>
+<BPurchasingProcessResumen button-text="Continuar" />
 </template>
 <style lang="scss" scoped>
 .shipping__method__title {

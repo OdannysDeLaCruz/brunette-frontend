@@ -29,29 +29,38 @@ const closeModal = () => {
 
 </script>
 <template>
-    <div class="modal" v-if="show">
-        <div class="modal__backdrop" :class="[`modal--${position}`]" @click.self="closeModal">
-            <div class="modal__content" :class="[`modal__content--${position}`]">
-                <div class="modal__header">
-                    <slot name="modalHeader"></slot>
-                    <img 
-                        class="modal__close" 
-                        src="@/assets/icons/icon-close.svg" 
-                        alt="" 
-                        title="Cerrar"
-                        @click="closeModal"
-                    />
-
-                </div>
-                <div class="modal__body">
-                    <slot name="modalBody"></slot>
-                </div>
-                <div class="modal__footer">
-                    <slot name="modalFooter"></slot>
-                </div>
+<div
+    v-if="show"
+    class="modal"
+>
+    <div
+        class="modal__backdrop"
+        :class="[`modal--${position}`]"
+        @click.self="closeModal"
+    >
+        <div
+            class="modal__content"
+            :class="[`modal__content--${position}`]"
+        >
+            <div class="modal__header">
+                <slot name="modalHeader" />
+                <img 
+                    class="modal__close" 
+                    src="@/assets/icons/icon-close.svg" 
+                    alt="" 
+                    title="Cerrar"
+                    @click="closeModal"
+                >
+            </div>
+            <div class="modal__body">
+                <slot name="modalBody" />
+            </div>
+            <div class="modal__footer">
+                <slot name="modalFooter" />
             </div>
         </div>
     </div>
+</div>
 </template>
 <style lang="scss" scoped>
 .modal {

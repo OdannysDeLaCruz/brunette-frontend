@@ -10,7 +10,9 @@ withDefaults(defineProps<Props>(), {
 })
 </script>
 <template>
-    <h1 class="shipping-address__title">{{ title }}</h1>
+<h1 class="shipping-address__title">
+    {{ title }}
+</h1>
 </template>
 <style lang="scss" scoped>
 .shipping-address__title {

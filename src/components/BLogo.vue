@@ -1,8 +1,16 @@
 <template>
-    <div>
-        <img class="image-mobile mobile" src="@/assets/images/brunette-isotipo.png" alt="Brunette Girl Extensiones">
-        <img class="image-desktop desktop" src="@/assets/images/brunette-logotipo.png" alt="Brunette Girl Extensiones">
-    </div>
+<div>
+    <img
+        class="image-mobile mobile"
+        src="@/assets/images/brunette-isotipo.png"
+        alt="Brunette Girl Extensiones"
+    >
+    <img
+        class="image-desktop desktop"
+        src="@/assets/images/brunette-logotipo.png"
+        alt="Brunette Girl Extensiones"
+    >
+</div>
 </template>
 <style lang="scss" scoped>
 .image-mobile {

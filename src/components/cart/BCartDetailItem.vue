@@ -11,26 +11,32 @@ defineProps({
 </script>
 
 <template>
-    <div class="cart-item">
-        <div class="cart-item__wrapper-image">
-            <img class="cart-item__image" src="@/assets/images/kanekalon.jpeg" :alt="product.name">
+<div class="cart-item">
+    <div class="cart-item__wrapper-image">
+        <img
+            class="cart-item__image"
+            src="@/assets/images/kanekalon.jpeg"
+            :alt="product.name"
+        >
+    </div>
+    <div class="cart-item__content">
+        <div class="cart-item__content__wrapper">
+            <h1 class="cart-item__name">
+                {{ product.name }}
+            </h1>
+            <div class="cart-item__prices">
+                <span class="cart-item__prices__item cart-item__prices__old">{{ product.price }}</span>
+                <span class="cart-item__prices__item cart-item__prices__new">{{ product.oldPrice }}</span>
+            </div>
+            <div class="cart-item__options">
+                <span class="cart-item__options__item cart-item__options__item--color-red">Remove</span>
+            </div>
         </div>
-        <div class="cart-item__content">
-            <div class="cart-item__content__wrapper">
-                <h1 class="cart-item__name">{{ product.name }}</h1>
-                <div class="cart-item__prices">
-                    <span class="cart-item__prices__item cart-item__prices__old">{{ product.price }}</span>
-                    <span class="cart-item__prices__item cart-item__prices__new">{{ product.oldPrice }}</span>
-                </div>
-                <div class="cart-item__options">
-                    <span class="cart-item__options__item cart-item__options__item--color-red">Remove</span>
-                </div>
-            </div>
-            <div class="cart-item__control-quantity">
-                <BControlQuantity :quantity="product.quantity" />
-            </div>
+        <div class="cart-item__control-quantity">
+            <BControlQuantity :quantity="product.quantity" />
         </div>
     </div>
+</div>
 </template>
 
 <style lang="scss" scoped>

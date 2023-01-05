@@ -22,21 +22,24 @@ const getImage = ( image: string ) => {
 }
 </script>
 <template>
-    <div class="payment-method-list">
-        <div class="payment-method-list__wrapper">
-            <BPaymentMethod 
-                class="payment-method-list__item"
-                v-for="paymentMethod in paymentMethodsList"
-                :key="paymentMethod.title"
-                :title="paymentMethod.title" 
-                :subtitle="paymentMethod.subtitle"
-            >
-                <template v-slot:paymentMethodImage>
-                    <img :src="getImage(paymentMethod.image)" :alt="paymentMethod.title">
-                </template>
-            </BPaymentMethod>
-        </div>
+<div class="payment-method-list">
+    <div class="payment-method-list__wrapper">
+        <BPaymentMethod 
+            v-for="paymentMethod in paymentMethodsList"
+            :key="paymentMethod.title"
+            class="payment-method-list__item"
+            :title="paymentMethod.title" 
+            :subtitle="paymentMethod.subtitle"
+        >
+            <template #paymentMethodImage>
+                <img
+                    :src="getImage(paymentMethod.image)"
+                    :alt="paymentMethod.title"
+                >
+            </template>
+        </BPaymentMethod>
     </div>
+</div>
 </template>
 <style lang="scss" scoped>
 .payment-method-list {

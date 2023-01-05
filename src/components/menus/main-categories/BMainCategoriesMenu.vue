@@ -2,16 +2,27 @@
     import BMainCategoriesItem from "@/components/menus/main-categories/BMainCategoriesItem.vue"
 </script>
 <template>
-    <div class="categories-menu">
-        <h2 class="categories-menu__title">Categorias</h2>
-        <nav class="categories-menu__navigation navigation">
-            <ul class="navigation__list">
-                <BMainCategoriesItem text="Kanekalon" linkPath="/categories/kanekalon" />
-                <BMainCategoriesItem text="Lanapelo" linkPath="/categories/lanapelo" />
-                <BMainCategoriesItem text="Microzizi" linkPath="/categories/microzizi" />
-            </ul>
-        </nav>
-    </div>
+<div class="categories-menu">
+    <h2 class="categories-menu__title">
+        Categorias
+    </h2>
+    <nav class="categories-menu__navigation navigation">
+        <ul class="navigation__list">
+            <BMainCategoriesItem
+                text="Kanekalon"
+                link-path="/categories/kanekalon"
+            />
+            <BMainCategoriesItem
+                text="Lanapelo"
+                link-path="/categories/lanapelo"
+            />
+            <BMainCategoriesItem
+                text="Microzizi"
+                link-path="/categories/microzizi"
+            />
+        </ul>
+    </nav>
+</div>
 </template>
 <style lang="scss" scoped>
 .categories-menu {

@@ -18,11 +18,23 @@ const handleIncrease = () => {
 </script>
 
 <template>
-    <div class="control-quantity">
-        <button class="control-quantity__button" @click="handleDecrease">-</button>
-        <div class="control-quantity__counter">{{ quantity }}</div>
-        <button class="control-quantity__button" @click="handleIncrease">+</button>
-    </div>    
+<div class="control-quantity">
+    <button
+        class="control-quantity__button"
+        @click="handleDecrease"
+    >
+        -
+    </button>
+    <div class="control-quantity__counter">
+        {{ quantity }}
+    </div>
+    <button
+        class="control-quantity__button"
+        @click="handleIncrease"
+    >
+        +
+    </button>
+</div>    
 </template>
 
 <style lang="scss" scoped>

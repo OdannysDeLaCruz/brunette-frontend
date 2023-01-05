@@ -29,32 +29,39 @@ const handleSelected = (id: string): void => {
 
 </script>
 <template>
-    <section class="payment__method">
-        <BPurchasingTitle title="¿Como quieres pagar?" align="center" class="payment__method__title" />
+<section class="payment__method">
+    <BPurchasingTitle
+        title="¿Como quieres pagar?"
+        align="center"
+        class="payment__method__title"
+    />
         
-        <BPurchasingSegment title="Formas de pago" subtitle="Selecciona una forma">
-            <template v-slot:purchasingSegmentList>
-                <form action="">
-                    <ul class="payment__method__list">
-                        <li 
-                            class="payment__method__list-item"
-                            v-for="payment in paymentList"
-                            :key="payment.id"
-                        >
-                           <BRadioCardCompact 
-                                :id="payment.id" 
-                                :name="payment.name" 
-                                :image="payment.image" 
-                                inputName="payment"
-                                @selected="handleSelected" 
-                            />
-                        </li>
-                    </ul>
-                </form>
-            </template>
-        </BPurchasingSegment>
-    </section>
-    <BPurchasingProcessResumen buttonText="Continuar" />
+    <BPurchasingSegment
+        title="Formas de pago"
+        subtitle="Selecciona una forma"
+    >
+        <template #purchasingSegmentList>
+            <form action="">
+                <ul class="payment__method__list">
+                    <li
+                        v-for="payment in paymentList"
+                        :key="payment.id"
+                        class="payment__method__list-item"
+                    >
+                        <BRadioCardCompact
+                            :id="payment.id"
+                            :name="payment.name"
+                            :image="payment.image"
+                            input-name="payment"
+                            @selected="handleSelected"
+                        />
+                    </li>
+                </ul>
+            </form>
+        </template>
+    </BPurchasingSegment>
+</section>
+<BPurchasingProcessResumen button-text="Continuar" />
 </template>
 <style lang="scss" scoped>
 .payment__method__title {

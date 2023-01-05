@@ -3,16 +3,16 @@ import BMainCategoriesMenu from '@/components/menus/main-categories/BMainCategor
 import BContent from '@/components/layouts/BContent.vue';
 </script>
 <template>
-    <BContent>
-        <div class="categories">
-            <div class="categories__side-bar">
-                <BMainCategoriesMenu />
-            </div>
-            <div class="categories__content">
-                <router-view></router-view>
-            </div>
+<BContent>
+    <div class="categories">
+        <div class="categories__side-bar">
+            <BMainCategoriesMenu />
         </div>
-    </BContent>
+        <div class="categories__content">
+            <router-view />
+        </div>
+    </div>
+</BContent>
 </template>
 <style lang="scss" scoped>
 .categories {

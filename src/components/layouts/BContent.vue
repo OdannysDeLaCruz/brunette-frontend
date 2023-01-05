@@ -7,11 +7,11 @@ defineProps({
 })
 </script>
 <template>
-    <div class="wrapper">
-        <div :class="type">
-            <slot></slot>
-        </div>
+<div class="wrapper">
+    <div :class="type">
+        <slot />
     </div>
+</div>
 </template>
 <style lang="scss" scoped>
 .wrapper {

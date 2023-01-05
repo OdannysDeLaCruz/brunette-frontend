@@ -24,39 +24,52 @@ const handleSelected = (id: string): void => {
 
 </script>
 <template>
-    <section class="shipping-address">
-        <BPurchasingTitle title="Datos de envío" align="center" class="shipping-address__title" />
+<section class="shipping-address">
+    <BPurchasingTitle
+        title="Datos de envío"
+        align="center"
+        class="shipping-address__title"
+    />
         
-        <BPurchasingSegment title="Mis direcciones" subtitle="Selecciona una dirección">
-            <template v-slot:purchasingSegmentList>
-                <ul class="shipping-address__list">
-                    <li 
-                        class="shipping-address__list-item"
-                        v-for="address in addresses"
-                        :key="address.id"
+    <BPurchasingSegment
+        title="Mis direcciones"
+        subtitle="Selecciona una dirección"
+    >
+        <template #purchasingSegmentList>
+            <ul class="shipping-address__list">
+                <li 
+                    v-for="address in addresses"
+                    :key="address.id"
+                    class="shipping-address__list-item"
+                >
+                    <BRadioCard 
+                        :address="address"
+                        input-name="address"
+                        @selected="handleSelected"
                     >
-                        <BRadioCard 
-                            :address="address"
-                            inputName="address"
-                            @selected="handleSelected"
-                        >
-                            <template v-slot:radioCardIcon>
-                                <img src="@/assets/icons/icon-pin-map.svg" alt="Pin">
-                            </template>
-                        </BRadioCard>
-                    </li>
-                </ul>
-            </template>
-        </BPurchasingSegment>
+                        <template #radioCardIcon>
+                            <img
+                                src="@/assets/icons/icon-pin-map.svg"
+                                alt="Pin"
+                            >
+                        </template>
+                    </BRadioCard>
+                </li>
+            </ul>
+        </template>
+    </BPurchasingSegment>
 
-        <button class="shipping-address__button-add-new-adddress">
-            <span>
-                <img src="@/assets/icons/icon-plus-yellow.svg" alt="add">
-            </span>
-            Agrear nueva dirección
-        </button>
-    </section>
-    <BPurchasingProcessResumen buttonText="Continuar" />
+    <button class="shipping-address__button-add-new-adddress">
+        <span>
+            <img
+                src="@/assets/icons/icon-plus-yellow.svg"
+                alt="add"
+            >
+        </span>
+        Agrear nueva dirección
+    </button>
+</section>
+<BPurchasingProcessResumen button-text="Continuar" />
 </template>
 <style lang="scss" scoped>
 

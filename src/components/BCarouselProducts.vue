@@ -45,27 +45,34 @@ defineProps({
 
 </script>
 <template>
-    <div class="carousel-product">
-        <span class="carousel-product__header">
-            <h2 class="carousel-product__title">{{ title }}</h2>
-            <router-link :to="link" class="carousel-product__link">Ver todos</router-link>
-        </span>
-        <carousel 
-            :items-to-show="5.2"
-            :breakpoints="breakpoints"
-            :wrap-around="true"
+<div class="carousel-product">
+    <span class="carousel-product__header">
+        <h2 class="carousel-product__title">{{ title }}</h2>
+        <router-link
+            :to="link"
+            class="carousel-product__link"
+        >Ver todos</router-link>
+    </span>
+    <carousel 
+        :items-to-show="5.2"
+        :breakpoints="breakpoints"
+        :wrap-around="true"
+    >
+        <slide 
+            v-for="product in products" 
+            :key="product.id"
         >
-            <slide 
-                v-for="product in products" 
-                :key="product.id"
-            >
-                <BProduct :id="product.id" :name="product.name" :price="product.price" />
-            </slide>
-            <template #addons>
-                <navigation />
-            </template>
-        </carousel>
-    </div>
+            <BProduct
+                :id="product.id"
+                :name="product.name"
+                :price="product.price"
+            />
+        </slide>
+        <template #addons>
+            <navigation />
+        </template>
+    </carousel>
+</div>
 </template>
 <style lang="scss" scoped>
 .carousel-product__header {

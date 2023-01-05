@@ -1,7 +1,10 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import BCartDetailItem from "@/components/cart/BCartDetailItem.vue";
 import BPurchasingProcessResumen from "./components/BPurchasingProcessResumen.vue";
 import BPurchasingTitle from "./components/BPurchasingTitle.vue";
+import { useStore } from "@/store/index";
+
+const store = useStore()
 
 const products = [
     {
@@ -35,21 +38,20 @@ const products = [
 ];
 </script>
 <template>
-    <section class="cart-page">
-        
-        <BPurchasingTitle title="Carrito" />
-        
-        <ul class="cart-page__list">
-            <li
-                class="cart-page__item"
-                v-for="product in products"
-                :key="product.id"
-            >
-                <BCartDetailItem :product="product" />
-            </li>
-        </ul>
-    </section>
-    <BPurchasingProcessResumen buttonText="Continuar" />
+<section class="cart-page">
+    <BPurchasingTitle title="Carrito" />
+    {{ store.state.count }}
+    <ul class="cart-page__list">
+        <li
+            v-for="product in products"
+            :key="product.id"
+            class="cart-page__item"
+        >
+            <BCartDetailItem :product="product" />
+        </li>
+    </ul>
+</section>
+<BPurchasingProcessResumen button-text="Continuar" />
 </template>
 <style lang="scss" scoped>
 .cart-page__title {

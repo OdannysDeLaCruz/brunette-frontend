@@ -10,14 +10,18 @@ withDefaults(defineProps<Props>(), {
 })
 </script>
 <template>
-    <section class="purchasing__segment">
-        <h1 class="purchasing__segment__title">{{ title }}</h1>
-        <h2 class="purchasing__segment__subtitle">{{ subtitle }}</h2>
+<section class="purchasing__segment">
+    <h1 class="purchasing__segment__title">
+        {{ title }}
+    </h1>
+    <h2 class="purchasing__segment__subtitle">
+        {{ subtitle }}
+    </h2>
         
-        <div class="purchasing__segment__list">
-            <slot name="purchasingSegmentList"></slot>
-        </div>
-    </section>
+    <div class="purchasing__segment__list">
+        <slot name="purchasingSegmentList" />
+    </div>
+</section>
 </template>
 <style lang="scss" scoped>
 .purchasing__segment {

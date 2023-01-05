@@ -12,34 +12,43 @@ const route = useRoute()
 </script>
 
 <template>
-    <section class="category">
-        <!-- Mobile filters -->
-        <div class="mobile__filters">
-            <p class="mobile__filters__results category__results">100 resultados</p>
-            <BModalFilter />
-        </div>
+<section class="category">
+    <!-- Mobile filters -->
+    <div class="mobile__filters">
+        <p class="mobile__filters__results category__results">
+            100 resultados
+        </p>
+        <BModalFilter />
+    </div>
 
-        <div class="category__summary">
-            <BBreadCrumb
-                class="category__breadcrumb"
-                :routes="['home', 'categorias', route.params.category ]"
-            />
-            <h1 class="category__title">{{ route.params.category }}</h1>
-            <p class="category__results">100 resultados</p>
-        </div>
+    <div class="category__summary">
+        <BBreadCrumb
+            class="category__breadcrumb"
+            :routes="['home', 'categorias', route.params.category ]"
+        />
+        <h1 class="category__title">
+            {{ route.params.category }}
+        </h1>
+        <p class="category__results">
+            100 resultados
+        </p>
+    </div>
 
-        <section class="category__products-list">
-            <BProductFluid 
-                class="category__products-list__item"
-                v-for="i in [0,1,2,3,4,5,6,7,8,9]"
-                :key="i"
-                :id="i"
-                :name="route.params.category"
-                :price="3500"
-            />
-        </section>
+    <section class="category__products-list">
+        <BProductFluid 
+            v-for="i in [0,1,2,3,4,5,6,7,8,9]"
+            :id="i"
+            :key="i"
+            class="category__products-list__item"
+            :name="route.params.category"
+            :price="3500"
+        />
     </section>
-    <BProductDetail :productDetail="productDetail" @closeDetail="closeDetail" />
+</section>
+<BProductDetail
+    :product-detail="productDetail"
+    @closeDetail="closeDetail"
+/>
 </template>
 
 <style lang="scss" scoped>

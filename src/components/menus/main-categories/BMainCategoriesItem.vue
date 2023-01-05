@@ -13,9 +13,14 @@ defineProps({
 
 </script>
 <template>
-    <li class="navigation__item">
-        <router-link :to="linkPath" class="navigation__link">{{ text }}</router-link>
-    </li>
+<li class="navigation__item">
+    <router-link
+        :to="linkPath"
+        class="navigation__link"
+    >
+        {{ text }}
+    </router-link>
+</li>
 </template>
 <style lang="scss" scoped>
     .navigation__item {

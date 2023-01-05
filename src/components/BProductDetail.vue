@@ -30,40 +30,64 @@ const onIncrease = () => {
 
 </script>
 <template>
-    <BModal 
-        position="center" 
-        width="850px"
-        :show="productDetail ? true : false"
-        @closeModal="closeModal"
-    >
-        <template v-slot:modalHeader>
-            <h1 class="detail__title detail__title--no-wrapper">Kanekalon Californiano Jumbo braid </h1>
-        </template>
-        <template v-slot:modalBody>
-            <div class="detail">
-                <div class="detail__content">
-                    <div class="detail__image-wrapper">
-                        <img class="detail__image" src="@/assets/images/kanekalon.jpeg" alt="">
-                    </div>
-                    <div class="detail__summary">
-                        <!-- <h1 class="detail__title">Kanekalon Californiano Jumbo braid </h1> -->
-                        <span class="detail__price">$14.000</span>
-                        <p class="detail__description">Cabello sintetico para trenzas marca jumbo brais.</p>
-                        <div class="detail__section-add">
-                            <BControlQuantity :quantity="quantity" @onDecrease="onDecrease" @onIncrease="onIncrease" />
-
-                            <BButton color="#000000" bg="#E7E7E7" padding="10px 16px" class="control-quantity__button-add"> AGREGAR AL CARRITO </BButton>
-                            <BButton color="#ffffff" bg="#FFCC00" padding="10px 16px" class="control-quantity__button-buy"> COMPRAR DE UNA </BButton>
-                        </div>
-                    </div>
+<BModal 
+    position="center" 
+    width="850px"
+    :show="productDetail ? true : false"
+    @closeModal="closeModal"
+>
+    <template #modalHeader>
+        <h1 class="detail__title detail__title--no-wrapper">
+            Kanekalon Californiano Jumbo braid
+        </h1>
+    </template>
+    <template #modalBody>
+        <div class="detail">
+            <div class="detail__content">
+                <div class="detail__image-wrapper">
+                    <img
+                        class="detail__image"
+                        src="@/assets/images/kanekalon.jpeg"
+                        alt=""
+                    >
                 </div>
-                <!-- section "recomendados, mas vendidos, productos vistos, etc" -->
-                <div class="detail__generals">
-                    
+                <div class="detail__summary">
+                    <!-- <h1 class="detail__title">Kanekalon Californiano Jumbo braid </h1> -->
+                    <span class="detail__price">$14.000</span>
+                    <p class="detail__description">
+                        Cabello sintetico para trenzas marca jumbo brais.
+                    </p>
+                    <div class="detail__section-add">
+                        <BControlQuantity
+                            :quantity="quantity"
+                            @onDecrease="onDecrease"
+                            @onIncrease="onIncrease"
+                        />
+
+                        <BButton
+                            color="#000000"
+                            bg="#E7E7E7"
+                            padding="10px 16px"
+                            class="control-quantity__button-add"
+                        >
+                            AGREGAR AL CARRITO
+                        </BButton>
+                        <BButton
+                            color="#ffffff"
+                            bg="#FFCC00"
+                            padding="10px 16px"
+                            class="control-quantity__button-buy"
+                        >
+                            COMPRAR DE UNA
+                        </BButton>
+                    </div>
                 </div>
             </div>
-        </template>
-    </BModal>
+            <!-- section "recomendados, mas vendidos, productos vistos, etc" -->
+            <div class="detail__generals" />
+        </div>
+    </template>
+</BModal>
 </template>
 <style lang="scss" scoped>
 .detail {

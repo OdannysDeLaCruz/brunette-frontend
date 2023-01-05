@@ -7,25 +7,33 @@ import BNav from '@/components/menus/BNav.vue';
 import BContent from './layouts/BContent.vue';
 </script>
 <template>
-    <BContent class="content-custom">
-        <header class="header">
-            <div class="header__wrapper">
-                <div class="header__logo">
-                    <router-link to="/home">
-                        <BLogo class="header__logo-image" />
-                    </router-link>
-                </div>
-                <div class="header__search header__search--full">
-                    <BSearch />
-                </div>  
-                <div class="header__nav">
-                    <BCart color="black" class="header__cart" />
-                    <img class="header__nav__open" src="@/assets/icons/icon-hamburger.svg" alt="Open nav" @click="">
-                    <BNav />
-                </div>
+<BContent class="content-custom">
+    <header class="header">
+        <div class="header__wrapper">
+            <div class="header__logo">
+                <router-link to="/home">
+                    <BLogo class="header__logo-image" />
+                </router-link>
             </div>
-        </header>
-    </BContent>
+            <div class="header__search header__search--full">
+                <BSearch />
+            </div>  
+            <div class="header__nav">
+                <BCart
+                    color="black"
+                    class="header__cart"
+                />
+                <img
+                    class="header__nav__open"
+                    src="@/assets/icons/icon-hamburger.svg"
+                    alt="Open nav"
+                    @click=""
+                >
+                <BNav />
+            </div>
+        </div>
+    </header>
+</BContent>
 </template>
 <style scoped lang="scss">
 .content-custom {

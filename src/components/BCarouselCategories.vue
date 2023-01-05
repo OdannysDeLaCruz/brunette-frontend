@@ -26,21 +26,21 @@ onMounted(() => {
 })
 </script>
 <template>
-    <div class="carousel-categories">
-        <div class="container carousel-categories__wrapper">
-            <div class="carousel-categories__slider">
-                <div
-                    v-for="(category, index) in categories"
-                    :key="index"
-                    class="category"
-                >
-                    <router-link :to="`/categories/${category.name}`">
-                        <span class="category__name"> {{ category.name }}</span>
-                    </router-link>
-                </div>
+<div class="carousel-categories">
+    <div class="container carousel-categories__wrapper">
+        <div class="carousel-categories__slider">
+            <div
+                v-for="(category, index) in categories"
+                :key="index"
+                class="category"
+            >
+                <router-link :to="`/categories/${category.name}`">
+                    <span class="category__name"> {{ category.name }}</span>
+                </router-link>
             </div>
         </div>
     </div>
+</div>
 </template>
 <style lang="scss" scoped>
 .carousel-categories {

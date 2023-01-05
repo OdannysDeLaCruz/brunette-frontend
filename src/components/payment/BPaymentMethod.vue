@@ -12,15 +12,19 @@ defineProps({
 })
 </script>
 <template>
-    <div class="payment-method">
-        <div class="payment-method__wrapper-image">
-            <slot name="paymentMethodImage"></slot>
-        </div>
-        <div>
-            <h1 class="payment-method__title"> {{ title }} </h1>
-            <h1 class="payment-method__subtitle"> {{ subtitle }} </h1>
-        </div>
+<div class="payment-method">
+    <div class="payment-method__wrapper-image">
+        <slot name="paymentMethodImage" />
     </div>
+    <div>
+        <h1 class="payment-method__title">
+            {{ title }}
+        </h1>
+        <h1 class="payment-method__subtitle">
+            {{ subtitle }}
+        </h1>
+    </div>
+</div>
 </template>
 <style lang="scss" scoped>
 .payment-method {

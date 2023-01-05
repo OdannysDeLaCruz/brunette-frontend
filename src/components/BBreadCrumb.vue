@@ -9,15 +9,15 @@ defineProps({
 })
 </script>
 <template>
-    <div class="breadcrumb">
-        <span 
-            class="breadcrumb__item"
-            v-for="route in routes"
-            :key="route"
-        >
-            {{ `${route}` }}
-        </span>
-    </div>
+<div class="breadcrumb">
+    <span 
+        v-for="route in routes"
+        :key="route"
+        class="breadcrumb__item"
+    >
+        {{ `${route}` }}
+    </span>
+</div>
 </template>
 <style lang="scss" scoped>
 .breadcrumb {

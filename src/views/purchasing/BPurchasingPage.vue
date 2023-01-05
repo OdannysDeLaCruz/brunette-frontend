@@ -2,11 +2,11 @@
 import BContent from "@/components/layouts/BContent.vue";
 </script>
 <template>
-    <BContent>
-        <section class="purchasing-process">
-            <router-view></router-view>
-        </section>
-    </BContent>
+<BContent>
+    <section class="purchasing-process">
+        <router-view />
+    </section>
+</BContent>
 </template>
 <style lang="scss" scoped>
 .purchasing-process {

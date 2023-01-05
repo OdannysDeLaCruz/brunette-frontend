@@ -26,15 +26,24 @@ const showDetail = () => {
 }
 </script>
 <template>
-    <div class="product" @click="showDetail">
-        <div class="product__wrapper-image">
-            <img class="product__image" src="@/assets/images/kanekalon.jpeg" alt="">
-        </div>
-        <div class="product__body">
-            <span class="product__price">${{ price }}</span>
-            <p class="product__name">{{ name }}</p>
-        </div>
+<div
+    class="product"
+    @click="showDetail"
+>
+    <div class="product__wrapper-image">
+        <img
+            class="product__image"
+            src="@/assets/images/kanekalon.jpeg"
+            alt=""
+        >
     </div>
+    <div class="product__body">
+        <span class="product__price">${{ price }}</span>
+        <p class="product__name">
+            {{ name }}
+        </p>
+    </div>
+</div>
 </template>
 <style lang="scss" scoped>
 .product {

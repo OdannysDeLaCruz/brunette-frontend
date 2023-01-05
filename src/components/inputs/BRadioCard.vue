@@ -11,10 +11,11 @@ interface Address {
 const props = defineProps({
     address: {
         type: Object as PropType<Address>,
-        require: true
+        required: true
     },
     inputName: {
-        type: String
+        type: String,
+        default: ''
     }
 })
 
@@ -28,22 +29,32 @@ const handleClick = () => {
 
 </script>
 <template>
-    <div class="radio-card">
-        <label class="radio-card__label" @click.prevent="handleClick">
-            <div class="radio-card__wrapper">
-                <div class="radio-card__icon">
-                    <slot name="radioCardIcon"></slot>
-                </div>
-                <div class="radio-card__content">
-                    <span class="radio-card__title radio-card__title--medium">{{ address?.name }}</span>
-                    <span class="radio-card__title radio-card__title--small"> {{ address?.additional }}</span>
-                </div>
-                <div class="radio-card__radio">
-                    <input class="radio-card__radio-input" type="radio" id="radioCardInput" :value="address?.id" :name="inputName" ref="inputNameRef" />
-                </div>
+<div class="radio-card">
+    <label 
+        class="radio-card__label"
+        @click.prevent="handleClick"
+    >
+        <div class="radio-card__wrapper">
+            <div class="radio-card__icon">
+                <slot name="radioCardIcon" />
             </div>
-        </label>
-    </div>
+            <div class="radio-card__content">
+                <span class="radio-card__title radio-card__title--medium">{{ address?.name }}</span>
+                <span class="radio-card__title radio-card__title--small"> {{ address?.additional }}</span>
+            </div>
+            <div class="radio-card__radio">
+                <input
+                    id="radioCardInput"
+                    ref="inputNameRef"
+                    class="radio-card__radio-input"
+                    type="radio"
+                    :value="address?.id"
+                    :name="inputName"
+                >
+            </div>
+        </div>
+    </label>
+</div>
 </template>
 <style lang="scss" scoped>
 .radio-card {

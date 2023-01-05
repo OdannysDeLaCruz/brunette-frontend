@@ -48,34 +48,51 @@ const route = useRoute()
 
 </script>
 <template>
+<BContent class="content-custom__carousel-categories">
+    <section class="section__carousel-categories">
+        <BCarouselCategories />
+    </section>
+</BContent>
+<BContent class="content-custom__general">
+    <section class="container section__banner-main">
+        <BBanner />
+    </section>
+    <section class="container section__payment-methods">
+        <BPaymentMethodsList />
+    </section>
+    <section class="container section__carousel-products">
+        <BCarouselProducts
+            title="¡Promociones del día!"
+            link="promotions"
+            :products="products"
+        />
+    </section>
+    <section class="container section__carousel-products">
+        <BCarouselProducts
+            title="Mas vendidos"
+            :products="products"
+        />
+    </section>
+    <section class="container section__carousel-products">
+        <BCarouselProducts
+            title="Lanapelos"
+            link="categories/lanapelos"
+            :products="products"
+        />
+    </section>
+    <section class="container section__carousel-products">
+        <BCarouselProducts
+            title="Kanekalon"
+            link="categories/kanekalon"
+            :products="products"
+        />
+    </section>
+</BContent>
 
-    <BContent class="content-custom__carousel-categories">
-        <section class="section__carousel-categories">
-            <BCarouselCategories />
-        </section>
-    </BContent>
-    <BContent class="content-custom__general">
-        <section class="container section__banner-main">
-            <BBanner />
-        </section>
-        <section class="container section__payment-methods">
-            <BPaymentMethodsList />
-        </section>
-        <section class="container section__carousel-products">
-            <BCarouselProducts title="¡Promociones del día!" link="promotions" :products="products" />
-        </section>
-        <section class="container section__carousel-products">
-            <BCarouselProducts title="Mas vendidos" :products="products" />
-        </section>
-        <section class="container section__carousel-products">
-            <BCarouselProducts title="Lanapelos" link="categories/lanapelos" :products="products" />
-        </section>
-        <section class="container section__carousel-products">
-            <BCarouselProducts title="Kanekalon" link="categories/kanekalon" :products="products" />
-        </section>
-    </BContent>
-
-    <BProductDetail :productDetail="productDetail" @closeDetail="closeDetail" />
+<BProductDetail
+    :product-detail="productDetail"
+    @closeDetail="closeDetail"
+/>
 </template>
 <style lang="scss" scoped>
 .content-custom__carousel-categories {

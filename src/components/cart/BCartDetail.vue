@@ -1,11 +1,10 @@
 <script lang="ts" setup>
 import BModal from '../BModal.vue';
 import BCartDetailItem from './BCartDetailItem.vue';
-import { useStore } from 'vuex';
+import { useStore } from '@/store/index';
 import BButton from '../BButton.vue';
 
 const store = useStore()
-
 
 const products = [
     {
@@ -30,41 +29,54 @@ const handleShowCart = () => {
 </script>
 
 <template>
-    <BModal 
-        position="full-right"
-        width="407px"
-        :show="store.state.cart.showCart"
-        @closeModal="handleShowCart"
-    >
-        <template v-slot:modalHeader>
-            <h1 class="cart__title">Mis productos</h1>
-        </template>
-        <template v-slot:modalBody>
-            <ul>
-                <li>
-                    <BCartDetailItem 
-                        v-for="product in products"
-                        :key="product.id"
-                        :product="product"
-                    />
-                </li>
-            </ul>
-        </template>
-        <template v-slot:modalFooter>
-            <div class="cart__footer">
-                <BButton bg="#FFDB4D80" color="#403300">Vaciar canasta</BButton>
-                <BButton bg="#FFCC00" color="#403300" padding="7px 13px">
-                    <div class="cart__button-whatsapp">
-                        <p class="cart__button-whatsapp__text">Pedir por Whatsapp</p>
-                        <div class="cart__button-whatsapp__wrapper">
-                            <span class="cart__button-whatsapp__unids">20 unids</span>
-                            <span class="cart__button-whatsapp__price">$ 40.000</span>
-                        </div>
+<BModal 
+    position="full-right"
+    width="407px"
+    :show="store.state.cart.showCart"
+    @closeModal="handleShowCart"
+>
+    <template #modalHeader>
+        <h1 class="cart__title">
+            Mis productos
+        </h1>
+    </template>
+    <template #modalBody>
+        <ul>
+            <li>
+                <BCartDetailItem 
+                    v-for="product in products"
+                    :key="product.id"
+                    :product="product"
+                />
+            </li>
+        </ul>
+    </template>
+    <template #modalFooter>
+        <div class="cart__footer">
+            <BButton
+                bg="#FFDB4D80"
+                color="#403300"
+            >
+                Vaciar canasta
+            </BButton>
+            <BButton
+                bg="#FFCC00"
+                color="#403300"
+                padding="7px 13px"
+            >
+                <div class="cart__button-whatsapp">
+                    <p class="cart__button-whatsapp__text">
+                        Pedir por Whatsapp
+                    </p>
+                    <div class="cart__button-whatsapp__wrapper">
+                        <span class="cart__button-whatsapp__unids">20 unids</span>
+                        <span class="cart__button-whatsapp__price">$ 40.000</span>
                     </div>
-                </BButton>
-            </div>
-        </template>
-    </BModal>
+                </div>
+            </BButton>
+        </div>
+    </template>
+</BModal>
 </template>
 
 <style lang="scss" scoped>

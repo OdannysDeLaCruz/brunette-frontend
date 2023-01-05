@@ -4,10 +4,10 @@ import BCartDetail from './components/cart/BCartDetail.vue';
 
 </script>
 <template>
-    <div class="app">
-        <BHeader />
-        <router-view />
-        <BCartDetail />
-    </div>
+<div class="app">
+    <BHeader />
+    <router-view />
+    <BCartDetail />
+</div>
 </template>
 <style lang="scss"></style>
