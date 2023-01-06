@@ -2,9 +2,9 @@
 import BCartDetailItem from "@/components/cart/BCartDetailItem.vue";
 import BPurchasingProcessResumen from "./components/BPurchasingProcessResumen.vue";
 import BPurchasingTitle from "./components/BPurchasingTitle.vue";
-import { useStore } from "@/store/index";
+import { usePurchasingProcessStore } from "@/stores/purchasingProcessStore";
 
-const store = useStore()
+usePurchasingProcessStore()
 
 const products = [
     {

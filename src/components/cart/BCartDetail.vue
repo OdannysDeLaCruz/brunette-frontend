@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import BModal from '../BModal.vue';
 import BCartDetailItem from './BCartDetailItem.vue';
-import { useStore } from '@/store/index';
+// import { useStore } from '@/store/index';
 import BButton from '../BButton.vue';
 
-const store = useStore()
+// const store = useStore()
 
 const products = [
     {
@@ -23,7 +23,7 @@ const products = [
     },
 ]
 const handleShowCart = () => {
-    store.commit('cart/handleShowCart')
+    // store.commit('cart/handleShowCart')
 }
 
 </script>
@@ -32,7 +32,7 @@ const handleShowCart = () => {
 <BModal 
     position="full-right"
     width="407px"
-    :show="store.state.cart.showCart"
+    :show="false"
     @closeModal="handleShowCart"
 >
     <template #modalHeader>

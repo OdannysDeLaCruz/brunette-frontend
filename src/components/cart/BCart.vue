@@ -1,13 +1,15 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
-import { useStore } from 'vuex';
+import { useCartStore } from '@/stores/cartStore';
+useCartStore()
+// import { useStore } from 'vuex';
 
-const store = useStore()
+// const store = useStore()
 const backgroundColorCounter = ref('white')
 const quantity = ref(1)
 
 const handleShowCart = () => {
-    store.commit('cart/handleShowCart')
+    // store.commit('cart/handleShowCart')
 }
 
 const props = defineProps({
