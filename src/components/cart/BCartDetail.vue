@@ -1,31 +1,7 @@
 <script lang="ts" setup>
 import BModal from '../BModal.vue';
 import BCartDetailItem from './BCartDetailItem.vue';
-// import { useStore } from '@/store/index';
 import BButton from '../BButton.vue';
-
-// const store = useStore()
-
-const products = [
-    {
-        id: 1,
-        name: "Kanekalon californiano",
-        oldPrice: 10500,
-        price: 10500,
-        quantity: 2,
-    },
-    {
-        id: 2,
-        name: "Lanapelo",
-        oldPrice: 3500,
-        price: 3700,
-        quantity: 4,
-    },
-]
-const handleShowCart = () => {
-    // store.commit('cart/handleShowCart')
-}
-
 </script>
 
 <template>
@@ -33,7 +9,6 @@ const handleShowCart = () => {
     position="full-right"
     width="407px"
     :show="false"
-    @closeModal="handleShowCart"
 >
     <template #modalHeader>
         <h1 class="cart__title">

@@ -1,16 +1,12 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
-import { useCartStore } from '@/stores/cartStore';
-useCartStore()
-// import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+import { useCartStore } from '../../stores/cartStore';
 
-// const store = useStore()
+const router = useRouter()
+const cartStore = useCartStore()
+
 const backgroundColorCounter = ref('white')
-const quantity = ref(1)
-
-const handleShowCart = () => {
-    // store.commit('cart/handleShowCart')
-}
 
 const props = defineProps({
     color: {
@@ -19,7 +15,14 @@ const props = defineProps({
     }
 })
 
+const showCart = () => {
+    router.push({
+        path: '/purchasing'
+    })
+}
+
 onMounted(() => {
+    console.log(cartStore.products)
     if ( props.color === 'white' ) {
         backgroundColorCounter: 'black'
     } 
@@ -28,20 +31,18 @@ onMounted(() => {
     }
 })
 
-
 </script>
-
 <template>
 <div
     class="cart__wrapper"
-    @click="handleShowCart"
+    @click="showCart"
 >
     <div
-        v-if="quantity" 
+        v-if="cartStore.products"
         class="cart__counter text-sm text-black font-bold" 
         :style="{ backgroundColor: backgroundColorCounter}"
     >
-        {{ quantity }}
+        {{ cartStore.quantity }}
     </div>
     <svg
         class="cart__icon"

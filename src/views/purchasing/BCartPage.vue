@@ -1,55 +1,32 @@
 <script lang="ts" setup>
-import BCartDetailItem from "@/components/cart/BCartDetailItem.vue";
+import BCartDetailItem from "../../components/cart/BCartDetailItem.vue";
 import BPurchasingProcessResumen from "./components/BPurchasingProcessResumen.vue";
 import BPurchasingTitle from "./components/BPurchasingTitle.vue";
-import { usePurchasingProcessStore } from "@/stores/purchasingProcessStore";
+import { useCartStore } from '../../stores/cartStore';
 
-usePurchasingProcessStore()
+const cartStore = useCartStore()
 
-const products = [
-    {
-        id: 1,
-        name: "Kanekalon californiano",
-        oldPrice: 10500,
-        price: 10500,
-        quantity: 2,
-    },
-    {
-        id: 2,
-        name: "Lanapelo",
-        oldPrice: 3500,
-        price: 3700,
-        quantity: 4,
-    },
-    {
-        id: 2,
-        name: "Lanapelo",
-        oldPrice: 3500,
-        price: 3700,
-        quantity: 4,
-    },
-    {
-        id: 2,
-        name: "Lanapelo",
-        oldPrice: 3500,
-        price: 3700,
-        quantity: 4,
-    },
-];
 </script>
 <template>
 <section class="cart-page">
     <BPurchasingTitle title="Carrito" />
-    {{ store.state.count }}
-    <ul class="cart-page__list">
-        <li
-            v-for="product in products"
-            :key="product.id"
-            class="cart-page__item"
-        >
-            <BCartDetailItem :product="product" />
-        </li>
-    </ul>
+    <template v-if="cartStore.products.length">
+        <ul class="cart-page__list">
+            <li
+                v-for="product in cartStore.products"
+                :key="product.id"
+                class="cart-page__item"
+            >
+                <BCartDetailItem :product="product" />
+            </li>
+        </ul>
+    </template>
+    <template v-if="cartStore.loading">
+        <h1>Cargando...</h1>
+    </template>
+    <template v-if="cartStore.products.length == 0">
+        <h1>No hay productos</h1>
+    </template>
 </section>
 <BPurchasingProcessResumen button-text="Continuar" />
 </template>
