@@ -1,8 +1,6 @@
-<script lang="ts" setup>
-import BPurchasingProcessResumen from "./components/BPurchasingProcessResumen.vue";
+<script setup>
 import BPurchasingTitle from "./components/BPurchasingTitle.vue";
 import BPurchasingSegment from "./components/BPurchasingSegment.vue";
-
 </script>
 <template>
 <section class="finalizing-order">
@@ -25,7 +23,6 @@ import BPurchasingSegment from "./components/BPurchasingSegment.vue";
         </template>
     </BPurchasingSegment>
 </section>
-<BPurchasingProcessResumen button-text="Finalizar pedido" />
 </template>
 <style lang="scss" scoped>
 

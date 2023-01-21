@@ -44,27 +44,27 @@ const routes = [
     children: [
         {
             path: 'cart',
-            name: 'Cart',
+            name: 'cart',
             component: () => import('../views/purchasing/BCartPage.vue')
         },
         {
             path: 'shippingMethod',
-            name: 'ShippingMethod',
+            name: 'shippingMethod',
             component: () => import('../views/purchasing/BShippingMethodPage.vue')
         },
         {
             path: 'shippingAddress',
-            name: 'ShippingAddress',
+            name: 'shippingAddress',
             component: () => import('../views/purchasing/BShippingAddressPage.vue')
         },
         {
             path: 'paymentMethod',
-            name: 'PaymentMethod',
+            name: 'paymentMethod',
             component: () => import('../views/purchasing/BPaymentMethodPage.vue')
         },
         {
             path: 'finalizingOrder',
-            name: 'FinalizingOrder',
+            name: 'finalizingOrder',
             component: () => import('../views/purchasing/BFinalizingOrderPage.vue')
         },
     ]

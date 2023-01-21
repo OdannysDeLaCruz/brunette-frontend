@@ -1,7 +1,5 @@
-<script lang="ts" setup>
-import { computed } from 'vue'
-
-const props = defineProps({
+<script setup>
+defineProps({
     color: {
         type: String,
         default: "black",
@@ -13,6 +11,10 @@ const props = defineProps({
     border: {
       type: String,
       default: 'none'
+    },
+    borderRadius: {
+      type: String,
+      default: '5px'
     },
     padding: {
       type: String,
@@ -33,10 +35,14 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .button {
-  border-radius: 5px;
+  border-radius: v-bind(borderRadius);
   border: v-bind(border);
   background: v-bind(bg);
   color: v-bind(color);
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .button:hover {
   cursor: pointer;

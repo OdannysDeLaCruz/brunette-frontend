@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import BCartDetailItem from "../../components/cart/BCartDetailItem.vue";
-import BPurchasingProcessResumen from "./components/BPurchasingProcessResumen.vue";
 import BPurchasingTitle from "./components/BPurchasingTitle.vue";
 import { useCartStore } from '../../stores/cartStore';
 
@@ -28,7 +27,7 @@ const cartStore = useCartStore()
         <h1>No hay productos</h1>
     </template>
 </section>
-<BPurchasingProcessResumen button-text="Continuar" />
+<!-- <BPurchasingProcessResumen button-text="Continuar" /> -->
 </template>
 <style lang="scss" scoped>
 .cart-page__title {

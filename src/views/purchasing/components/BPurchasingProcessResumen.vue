@@ -1,29 +1,16 @@
-<script lang="ts" setup>
-import { useRouter } from "vue-router";
+<script setup>
 import BButton from "@/components/BButton.vue";
-import { usePurchasingProcessStore } from "../../../stores/purchasingProcessStore";
 
-const router = useRouter()
-const purchasingProcessStore = usePurchasingProcessStore()
-
-interface Props {
-    buttonText: string
-}
-
-withDefaults(defineProps<Props>(), {
-    buttonText: 'Button text'
-})
-
-const nextStep = () => {
-    console.log('click')
-    const next = purchasingProcessStore.nextStep()
-    if ( next ) {
-        router.push({
-            path: purchasingProcessStore.$state.steps[next].url 
-        })
-        purchasingProcessStore.setCurrentStepId(next)
+defineProps({
+    buttonText: {
+        type: String,
+        default: 'Button text'
+    },
+    click: {
+        type: Function,
+        default: () => {}
     }
-}
+})
 
 </script>
 <template>
@@ -42,7 +29,7 @@ const nextStep = () => {
         bg="#FFCC00"
         color="#403300"
         size="large"
-        @click="nextStep()"
+        @click="click()"
     >
         {{ buttonText }}
     </BButton>

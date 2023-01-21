@@ -41,7 +41,7 @@ export const usePurchasingProcessStore = defineStore('purchasingProcessStore', {
                     data: {}
                 },
             },
-            currentStepId: 'cart'
+            currentStepId: 'cart',
         }
     },
     getters: {

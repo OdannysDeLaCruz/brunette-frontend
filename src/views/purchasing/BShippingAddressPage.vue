@@ -1,9 +1,8 @@
-<script lang="ts" setup>
-import { ref } from "vue";
-import BPurchasingProcessResumen from "./components/BPurchasingProcessResumen.vue";
-import BPurchasingTitle from "./components/BPurchasingTitle.vue";
-import BRadioCard from "@/components/inputs/BRadioCard.vue";
-import BPurchasingSegment from "./components/BPurchasingSegment.vue";
+<script setup>
+import { ref } from "vue"
+import BPurchasingTitle from "./components/BPurchasingTitle.vue"
+import BRadioCard from "@/components/inputs/BRadioCard.vue"
+import BPurchasingSegment from "./components/BPurchasingSegment.vue"
 
 const addresses = ref([
     {
@@ -18,7 +17,7 @@ const addresses = ref([
     }
 ])
 
-const handleSelected = (id: string): void => {
+const handleSelected = (id) => {
     console.log('id emitted', id)
 }
 
@@ -69,7 +68,6 @@ const handleSelected = (id: string): void => {
         Agrear nueva dirección
     </button>
 </section>
-<BPurchasingProcessResumen button-text="Continuar" />
 </template>
 <style lang="scss" scoped>
 

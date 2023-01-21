@@ -1,6 +1,5 @@
-<script lang="ts" setup>
+<script setup>
 import { ref } from "vue";
-import BPurchasingProcessResumen from "./components/BPurchasingProcessResumen.vue";
 import BPurchasingTitle from "./components/BPurchasingTitle.vue";
 import BPurchasingSegment from "./components/BPurchasingSegment.vue";
 import BRadioCardCompact from "@/components/inputs/BRadioCardCompact.vue";
@@ -23,7 +22,7 @@ const paymentList = ref([
     }
 ])
 
-const handleSelected = (id: string): void => {
+const handleSelected = (id) => {
     console.log('id emitted', id)
 }
 
@@ -61,7 +60,6 @@ const handleSelected = (id: string): void => {
         </template>
     </BPurchasingSegment>
 </section>
-<BPurchasingProcessResumen button-text="Continuar" />
 </template>
 <style lang="scss" scoped>
 .payment__method__title {

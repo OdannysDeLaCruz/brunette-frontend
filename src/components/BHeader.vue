@@ -1,10 +1,16 @@
-<script lang="ts" setup>
+<script setup>
+import { ref } from 'vue';
 import BButton from '@/components/BButton.vue';
 import BCart from '@/components/cart/BCart.vue';
 import BLogo from '@/components/BLogo.vue';
 import BSearch from '@/components/BSearch.vue';
 import BNav from '@/components/menus/BNav.vue';
 import BContent from './layouts/BContent.vue';
+
+const openNavigation = ref(false)
+const openNav = () => {
+    openNavigation.value = true
+}
 </script>
 <template>
 <BContent class="content-custom">
@@ -27,9 +33,9 @@ import BContent from './layouts/BContent.vue';
                     class="header__nav__open"
                     src="@/assets/icons/icon-hamburger.svg"
                     alt="Open nav"
-                    @click=""
+                    @click="openNav()"
                 >
-                <BNav />
+                <BNav :active="openNavigation" @onClose="() => { openNavigation = false }" />
             </div>
         </div>
     </header>
