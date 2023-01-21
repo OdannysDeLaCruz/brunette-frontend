@@ -3,15 +3,13 @@ import { CartRepository } from "@/repositories/CartRepositoy";
 
 const cartRepository = new CartRepository()
 
-const cart = {
-    id: 0,
-    products: [],
-    quantity: 0
-}
-
 export const useCartStore = defineStore('cartStore', {
     state: () => ({
-        cart,
+        cart: {
+            id: 0,
+            products: [],
+            quantity: 0
+        },
         loading: true
     }),
     getters: {
