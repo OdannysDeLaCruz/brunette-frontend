@@ -84,11 +84,6 @@ export const usePurchasingProcessStore = defineStore('purchasingProcessStore', (
     })
 
     const currentStepId = ref('cart')
-    const dataOrder = ref({
-        shippingMethodId: null,
-        shippingAddressId: null,
-        paymentMethodId: null
-    })
 
     const setCurrentStepId = (stepId) => {
         currentStepId.value = stepId
@@ -120,7 +115,6 @@ export const usePurchasingProcessStore = defineStore('purchasingProcessStore', (
         navigation,
         steps,
         currentStepId,
-        dataOrder,
         setCurrentStepId,
         previousStep,
         getNextStep

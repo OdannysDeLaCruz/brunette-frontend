@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
-import { CartRepository } from "@/repositories/CartRepositoy";
+import { useCart } from "../services/useCart";
 
-const cartRepository = new CartRepository()
+const { getCart } = useCart()
 
 export const useCartStore = defineStore('cartStore', {
     state: () => ({
@@ -21,7 +21,7 @@ export const useCartStore = defineStore('cartStore', {
             this.loading = true
             try {
 
-                this.cart = await cartRepository.get()
+                this.cart = await getCart()
                 this.loading = false
                 
             } catch( error ) {

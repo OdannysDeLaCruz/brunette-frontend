@@ -4,13 +4,20 @@ import BPurchasingTitle from "./components/BPurchasingTitle.vue";
 import BPurchasingSegment from "./components/BPurchasingSegment.vue";
 import BRadioCardCompact from "@/components/inputs/BRadioCardCompact.vue";
 import { usePurchasingProcessStore } from '../../stores/purchasingProcessStore';
+import { useOrderStore } from "../../stores/orderStore";
 
 const { steps } = usePurchasingProcessStore()
 const shippingMethod = ref(steps['shippingMethod'])
 
+const { order, saveShippingMethod } = useOrderStore()
+
 const handleSelected = (id)  => {
     console.log('id emitted', id)
-    
+    saveShippingMethod(id)
+}
+
+const isActive = (id) => {
+    return order.shipping.method && order.shipping.method === id
 }
 
 </script>
@@ -39,7 +46,8 @@ const handleSelected = (id)  => {
                         :image="shipping.image" 
                         :additional="shipping.additionalCost && `+ ${shipping.additionalCost}`" 
                         input-name="inputShippingMethod"
-                        @selected="handleSelected" 
+                        @selected="handleSelected"
+                        :active="isActive(shipping.id)"
                     />
                 </li>
             </ul>

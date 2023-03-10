@@ -4,14 +4,20 @@ import BPurchasingTitle from "./components/BPurchasingTitle.vue"
 import BRadioCard from "@/components/inputs/BRadioCard.vue"
 import BPurchasingSegment from "./components/BPurchasingSegment.vue"
 import { usePurchasingProcessStore } from '../../stores/purchasingProcessStore'
+import { useOrderStore } from "../../stores/orderStore";
 
 const { steps } = usePurchasingProcessStore()
 const shippingAddress = ref(steps['shippingAddress'])
+const { order, saveShippingAddress } = useOrderStore()
 
 const handleSelected = (id) => {
     console.log('id emitted', id)
+    saveShippingAddress(id)
 }
 
+const isActive = (id) => {
+    return order.shipping.address && order.shipping.address === id
+}
 </script>
 <template>
 <section class="shipping-address">
@@ -36,6 +42,7 @@ const handleSelected = (id) => {
                         :address="address"
                         input-name="address"
                         @selected="handleSelected"
+                        :active="isActive(address.id)"
                     >
                         <template #radioCardIcon>
                             <img

@@ -2,8 +2,9 @@
 import BHeader from './components/BHeader.vue'
 import BCartDetail from './components/cart/BCartDetail.vue'
 import { useCartStore } from './stores/cartStore'
-const cartStore = useCartStore()
-cartStore.getProducts()
+const { getProducts } = useCartStore()
+
+getProducts()
 
 </script>
 <template>

@@ -6,7 +6,8 @@ interface Props {
     name: string,
     image: string,
     additional?: string | number,
-    inputName: string
+    inputName: string,
+    active: boolean
 }
 
 const props = defineProps<Props>()
@@ -30,6 +31,7 @@ const handleClick = () => {
         type="radio"
         :name="inputName"
         :value="id"
+        :checked="active"
     >
     <div class="payment-method__wrapper">
         <figure class="payment-method__figure">

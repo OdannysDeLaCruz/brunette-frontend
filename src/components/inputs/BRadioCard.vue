@@ -5,7 +5,7 @@ import type { PropType } from 'vue'
 interface Address {
     id: number,
     name: string,
-    additional?: string
+    additional?: string | number
 }
 
 const props = defineProps({
@@ -16,6 +16,10 @@ const props = defineProps({
     inputName: {
         type: String,
         default: ''
+    },
+    active: {
+        type: Boolean,
+        default: false
     }
 })
 
@@ -34,6 +38,15 @@ const handleClick = () => {
         class="radio-card__label"
         @click.prevent="handleClick"
     >
+    <input
+        id="radioCardInput"
+        ref="inputNameRef"
+        class="radio-card__radio-input"
+        type="radio"
+        :value="address?.id"
+        :name="inputName"
+        :checked="active"
+    >
         <div class="radio-card__wrapper">
             <div class="radio-card__icon">
                 <slot name="radioCardIcon" />
@@ -42,27 +55,18 @@ const handleClick = () => {
                 <span class="radio-card__title radio-card__title--medium">{{ address?.name }}</span>
                 <span class="radio-card__title radio-card__title--small"> {{ address?.additional }}</span>
             </div>
-            <div class="radio-card__radio">
-                <input
-                    id="radioCardInput"
-                    ref="inputNameRef"
-                    class="radio-card__radio-input"
-                    type="radio"
-                    :value="address?.id"
-                    :name="inputName"
-                >
-            </div>
         </div>
     </label>
 </div>
 </template>
 <style lang="scss" scoped>
 .radio-card {
-    padding: 17px;
     background: #FFFFFF;
-    border-radius: 5px;
 }
 .radio-card__wrapper {
+    border: 1px solid #FFFFFF;
+    padding: 17px;
+    border-radius: 5px;
     display: grid;
     grid-template-columns: 20px auto 22px;
     gap: 16px;
@@ -89,8 +93,11 @@ const handleClick = () => {
     font-size: 14px;
     line-height: 17px;
 }
-.radio-card__radio {}
-.radio-card__radio-input {
 
+.radio-card__radio-input {
+    display: none;
+}
+.radio-card__radio-input:checked + .radio-card__wrapper {
+    border: 1px solid #FFCC00;
 }
 </style>

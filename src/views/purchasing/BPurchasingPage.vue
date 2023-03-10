@@ -4,10 +4,16 @@ import { useRouter, useRoute } from "vue-router"
 import { usePurchasingProcessStore } from "@/stores/purchasingProcessStore";
 import BPurchasingProcessResumen from "./components/BPurchasingProcessResumen.vue";
 import BContent from "@/components/layouts/BContent.vue"
+import { useOrderStore } from "../../stores/orderStore";
+import { useOrder } from "../../services/useOrder";
 
 const route = useRoute()
 const router = useRouter()
 const { navigation, steps, setCurrentStepId, getNextStep } = usePurchasingProcessStore()
+
+const { setOrder } = useOrderStore()
+setOrder()
+const { createOrder } = useOrder()
 
 const nextStep = ref(false)
 
@@ -38,6 +44,7 @@ const get_next_step = () => {
         setCurrentStepId(nextStep.value)
     } else {
         console.log('fin')
+        createOrder()
     }
 }
 

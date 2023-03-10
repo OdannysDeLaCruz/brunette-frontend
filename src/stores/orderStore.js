@@ -1,52 +1,61 @@
-import { defineStore } from "pinia";
+import { ref } from "vue"
+import { defineStore } from "pinia"
 
-export const useOrderStore = defineStore('OrderStore', {
-    state: () => {
-        return {
-            order: {
-                userId: 1,
-                products: [],
-                payment: {
-                    method: 1
-                },
-                shipping: {
-                    method: 1,
-                    address: {
-    
-                    }
-                }
-            }
+export const useOrderStore = defineStore('OrderStore', () => {
+    const order = ref({
+        userId: null,
+        products: [],
+        payment: {
+            method: null
+        },
+        shipping: {
+            method: null,
+            address: null
         }
-    },
-    getters: {
-    },
-    actions: {
-        saveOrderLocally: () => {
-            localStorage.setItem('order', JSON.stringify(this.order))
-        },
-        setOrder: () => {
-            const orderLocal = localStorage.getItem('order')
-            if ( orderLocal ) {
-                this.order = JSON.parse(order)
-            } else {
-                this.saveOrderLocally()
-            }
-        },
-        saveProducts: (products) => {
-            this.order.products = products
-            this.saveOrderLocally()
-        },
-        savePaymentMethod: (paymentMethodId) => {
-            this.order.payment.method = paymentMethodId
-            this.saveOrderLocally()
-        },
-        saveShippingMethod: (shippingMethodId) => {
-            this.order.shipping.method = shippingMethodId
-            this.saveOrderLocally()
-        },
-        saveShippingAddress: (shippingAddressId) => {
-            this.order.shipping.address = shippingAddressId
-            this.saveOrderLocally()
-        },
+    })
+     
+
+    const saveOrderLocally = () => {
+        localStorage.setItem('order', JSON.stringify(order.value))
+    }
+
+    const setOrder = () => {
+        const orderLocal = localStorage.getItem('order')
+        if ( orderLocal ) {
+            order.value = JSON.parse(orderLocal)
+        } else {
+            saveOrderLocally()
+        }
+    }
+    
+    const saveProducts = (products) => {
+        order.value.products = products
+        saveOrderLocally()
+    }
+
+    const saveShippingMethod = (shippingMethodId) => {
+        order.value.shipping.method = shippingMethodId
+        saveOrderLocally()
+    }
+
+    const saveShippingAddress = (shippingAddressId) => {
+        order.value.shipping.address = shippingAddressId
+        saveOrderLocally()
+    }
+
+    const savePaymentMethod = (paymentMethodId) => {
+        order.value.payment.method = paymentMethodId
+        saveOrderLocally()
+    }
+
+    return {
+        order,
+        saveOrderLocally,
+        setOrder,
+        saveProducts,
+        savePaymentMethod,
+        saveShippingMethod,
+        saveShippingAddress,
+
     }
 })

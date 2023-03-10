@@ -11,22 +11,25 @@ const purchasingProcessStore = usePurchasingProcessStore()
 <template>
 <section class="cart-page">
     <BPurchasingTitle :title="purchasingProcessStore.steps['cart'].title" />
-    <template v-if="cartStore.products.length">
-        <ul class="cart-page__list">
-            <li
-                v-for="product in cartStore.products"
-                :key="product.id"
-                class="cart-page__item"
-            >
-                <BCartDetailItem :product="product" />
-            </li>
-        </ul>
-    </template>
     <template v-if="cartStore.loading">
         <h1>Cargando...</h1>
     </template>
-    <template v-if="cartStore.products.length == 0">
-        <h1>No hay productos</h1>
+    <template v-else>
+        <template v-if="cartStore.products.length">
+            <ul class="cart-page__list">
+                <li
+                    v-for="product in cartStore.products"
+                    :key="product.id"
+                    class="cart-page__item"
+                >
+                    <BCartDetailItem :product="product" />
+                </li>
+            </ul>
+        </template>
+        <template v-if="cartStore.products.length == 0">
+            <h1>No hay productos</h1>
+        </template>
+
     </template>
 </section>
 <!-- <BPurchasingProcessResumen button-text="Continuar" /> -->
