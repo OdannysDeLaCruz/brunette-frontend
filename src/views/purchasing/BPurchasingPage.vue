@@ -7,14 +7,15 @@ import BContent from "@/components/layouts/BContent.vue"
 
 const route = useRoute()
 const router = useRouter()
-const purchasingProcessStore = usePurchasingProcessStore()
+const { navigation, steps, setCurrentStepId, getNextStep } = usePurchasingProcessStore()
+
 const nextStep = ref(false)
 
 watch(route, (newRoute) => {
     console.log(newRoute.name)
     
-    if ( purchasingProcessStore.$state.navigation.includes(newRoute.name) ) {
-        purchasingProcessStore.setCurrentStepId(newRoute.name)
+    if ( navigation.includes(newRoute.name) ) {
+        setCurrentStepId(newRoute.name)
     } else {
         router.push({
             name: 'cart'
@@ -24,17 +25,17 @@ watch(route, (newRoute) => {
 
 onMounted(() => {
     console.log(route.name)
-    purchasingProcessStore.setCurrentStepId(route.name)
+    setCurrentStepId(route.name)
 })
 
-const getNextStep = () => {
-    nextStep.value = purchasingProcessStore.nextStep()
+const get_next_step = () => {
+    nextStep.value = getNextStep()
     
     if ( nextStep.value ) {
         router.push({
-            path: purchasingProcessStore.$state.steps[nextStep.value].url 
+            path: steps[nextStep.value].url 
         })
-        purchasingProcessStore.setCurrentStepId(nextStep.value)
+        setCurrentStepId(nextStep.value)
     } else {
         console.log('fin')
     }
@@ -45,7 +46,7 @@ const getNextStep = () => {
 <BContent>
     <section class="purchasing-process">
         <router-view />
-        <BPurchasingProcessResumen :button-text="'Continuar'" :click="getNextStep" />
+        <BPurchasingProcessResumen :button-text="'Continuar'" :click="get_next_step" />
     </section>
 </BContent>
 </template>

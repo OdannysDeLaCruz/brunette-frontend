@@ -5,8 +5,8 @@ import BRadioCard from "@/components/inputs/BRadioCard.vue"
 import BPurchasingSegment from "./components/BPurchasingSegment.vue"
 import { usePurchasingProcessStore } from '../../stores/purchasingProcessStore'
 
-const purchasingProcessStore = usePurchasingProcessStore()
-const shippingAddress = ref(purchasingProcessStore.steps['shippingAddress'])
+const { steps } = usePurchasingProcessStore()
+const shippingAddress = ref(steps['shippingAddress'])
 
 const handleSelected = (id) => {
     console.log('id emitted', id)

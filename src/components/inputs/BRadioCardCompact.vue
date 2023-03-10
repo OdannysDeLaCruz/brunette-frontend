@@ -5,7 +5,7 @@ interface Props {
     id: number,
     name: string,
     image: string,
-    additional?: string,
+    additional?: string | number,
     inputName: string
 }
 
