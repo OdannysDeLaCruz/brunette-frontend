@@ -19,20 +19,61 @@ export const usePurchasingProcessStore = defineStore('purchasingProcessStore', {
                 'shippingMethod': {
                     name: 'shippingMethod',
                     url: '/purchasing/shippingMethod',
-                    title: 'Carrito',
-                    data: {}
+                    title: '¿Como quieres recibir tu pedido?',
+                    data: [
+                        // Estos datos deben ser configurados o actualizados cada vez desde el back al entrar a /cart
+                        {
+                            id: 1,
+                            label: 'Domicilio a mi casa',
+                            image: 'https://picsum.photos/200/200?random=1',
+                            additionalCost: 4000
+                        },
+                        {
+                            id: 2,
+                            label: 'Recoger en el local',
+                            image: 'https://picsum.photos/200/200?random=2',
+                            additionalCost: 0
+                        }
+                    ]
                 },
                 'shippingAddress': {
                     name: 'shippingAddress',
                     url: '/purchasing/shippingAddress',
-                    title: 'Carrito',
-                    data: {}
+                    title: 'Datos de envío',
+                    data: [
+                        {
+                            id: 1,
+                            name: 'Calle 6b # 41 - 36',
+                            additional: 'La Nevada'
+                        },
+                        {
+                            id: 2,
+                            name: 'Calle 6a # 40 - 28',
+                            additional: 'La Nevada'
+                        }
+                    ]
                 },
                 'paymentMethod': {
                     name: 'paymentMethod',
                     url: '/purchasing/paymentMethod',
-                    title: 'Carrito',
-                    data: {}
+                    title: '¿Como quieres pagar?',
+                    data: [
+                        {
+                            id: 1,
+                            name: 'Transferencia Bancaría',
+                            image: 'https://picsum.photos/200/200?random=1'
+                        },
+                        {
+                            id: 2,
+                            name: 'Efectivo',
+                            image: 'https://picsum.photos/200/200?random=2'
+                        },
+                        {
+                            id: 3,
+                            name: 'Nequi',
+                            image: 'https://picsum.photos/200/200?random=3'
+                        }
+                    ]
                 },
                 'finalizingOrder': {
                     name: 'finalizingOrder',

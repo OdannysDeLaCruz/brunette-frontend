@@ -2,13 +2,15 @@
 import BCartDetailItem from "../../components/cart/BCartDetailItem.vue";
 import BPurchasingTitle from "./components/BPurchasingTitle.vue";
 import { useCartStore } from '../../stores/cartStore';
+import { usePurchasingProcessStore } from '../../stores/purchasingProcessStore';
 
 const cartStore = useCartStore()
+const purchasingProcessStore = usePurchasingProcessStore()
 
 </script>
 <template>
 <section class="cart-page">
-    <BPurchasingTitle title="Carrito" />
+    <BPurchasingTitle :title="purchasingProcessStore.steps['cart'].title" />
     <template v-if="cartStore.products.length">
         <ul class="cart-page__list">
             <li

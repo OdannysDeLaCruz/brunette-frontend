@@ -3,21 +3,10 @@ import { ref } from "vue";
 import BPurchasingTitle from "./components/BPurchasingTitle.vue";
 import BPurchasingSegment from "./components/BPurchasingSegment.vue";
 import BRadioCardCompact from "@/components/inputs/BRadioCardCompact.vue";
+import { usePurchasingProcessStore } from '../../stores/purchasingProcessStore';
 
-const shippingList = ref([
-    {
-        id: 1,
-        name: 'Domicilio a mi casa',
-        image: 'https://picsum.photos/200/200?random=1',
-        ammount: '4000'
-    },
-    {
-        id: 2,
-        name: 'Recoger en el local',
-        image: 'https://picsum.photos/200/200?random=2',
-        ammount: ''
-    }
-])
+const purchasingProcessStore = usePurchasingProcessStore()
+const shippingMethod = ref(purchasingProcessStore.steps['shippingMethod'])
 
 const handleSelected = (id)  => {
     console.log('id emitted', id)
@@ -27,7 +16,7 @@ const handleSelected = (id)  => {
 <template>
 <section class="shipping__method">
     <BPurchasingTitle
-        title="¿Como quieres recibir tu pedido?" 
+        :title="shippingMethod.title" 
         align="center" 
         class="shipping__method__title"
     />
@@ -39,15 +28,15 @@ const handleSelected = (id)  => {
         <template #purchasingSegmentList>
             <ul class="shipping__method__list">
                 <li 
-                    v-for="shipping in shippingList"
+                    v-for="shipping in shippingMethod.data"
                     :key="shipping.id"
                     class="shipping__method__list-item"
                 >
                     <BRadioCardCompact
                         :id="shipping.id" 
-                        :name="shipping.name" 
+                        :name="shipping.label" 
                         :image="shipping.image" 
-                        :additional="shipping.ammount && `+ ${shipping.ammount}`" 
+                        :additional="shipping.additionalCost && `+ ${shipping.additionalCost}`" 
                         input-name="inputShippingMethod"
                         @selected="handleSelected" 
                     />

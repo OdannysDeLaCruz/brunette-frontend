@@ -3,19 +3,10 @@ import { ref } from "vue"
 import BPurchasingTitle from "./components/BPurchasingTitle.vue"
 import BRadioCard from "@/components/inputs/BRadioCard.vue"
 import BPurchasingSegment from "./components/BPurchasingSegment.vue"
+import { usePurchasingProcessStore } from '../../stores/purchasingProcessStore'
 
-const addresses = ref([
-    {
-        id: 1,
-        name: 'Calle 6b # 41 - 36',
-        additional: 'La Nevada'
-    },
-    {
-        id: 2,
-        name: 'Calle 6b # 41 - 36',
-        additional: 'La Nevada'
-    }
-])
+const purchasingProcessStore = usePurchasingProcessStore()
+const shippingAddress = ref(purchasingProcessStore.steps['shippingAddress'])
 
 const handleSelected = (id) => {
     console.log('id emitted', id)
@@ -25,7 +16,7 @@ const handleSelected = (id) => {
 <template>
 <section class="shipping-address">
     <BPurchasingTitle
-        title="Datos de envío"
+        :title="shippingAddress.title"
         align="center"
         class="shipping-address__title"
     />
@@ -37,7 +28,7 @@ const handleSelected = (id) => {
         <template #purchasingSegmentList>
             <ul class="shipping-address__list">
                 <li 
-                    v-for="address in addresses"
+                    v-for="address in shippingAddress.data"
                     :key="address.id"
                     class="shipping-address__list-item"
                 >

@@ -3,24 +3,10 @@ import { ref } from "vue";
 import BPurchasingTitle from "./components/BPurchasingTitle.vue";
 import BPurchasingSegment from "./components/BPurchasingSegment.vue";
 import BRadioCardCompact from "@/components/inputs/BRadioCardCompact.vue";
+import { usePurchasingProcessStore } from '../../stores/purchasingProcessStore'
 
-const paymentList = ref([
-    {
-        id: 1,
-        name: 'Transferencia Bancaría',
-        image: 'https://picsum.photos/200/200?random=1'
-    },
-    {
-        id: 2,
-        name: 'Efectivo',
-        image: 'https://picsum.photos/200/200?random=2'
-    },
-    {
-        id: 3,
-        name: 'Nequi',
-        image: 'https://picsum.photos/200/200?random=3'
-    }
-])
+const purchasingProcessStore = usePurchasingProcessStore()
+const paymentMethod = ref(purchasingProcessStore.steps['paymentMethod'])
 
 const handleSelected = (id) => {
     console.log('id emitted', id)
@@ -30,7 +16,7 @@ const handleSelected = (id) => {
 <template>
 <section class="payment__method">
     <BPurchasingTitle
-        title="¿Como quieres pagar?"
+        :title="paymentMethod.title"
         align="center"
         class="payment__method__title"
     />
@@ -43,7 +29,7 @@ const handleSelected = (id) => {
             <form action="">
                 <ul class="payment__method__list">
                     <li
-                        v-for="payment in paymentList"
+                        v-for="payment in paymentMethod.data"
                         :key="payment.id"
                         class="payment__method__list-item"
                     >

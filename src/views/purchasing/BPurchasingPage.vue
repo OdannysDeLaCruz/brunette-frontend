@@ -29,11 +29,14 @@ onMounted(() => {
 
 const getNextStep = () => {
     nextStep.value = purchasingProcessStore.nextStep()
+    
     if ( nextStep.value ) {
         router.push({
             path: purchasingProcessStore.$state.steps[nextStep.value].url 
         })
         purchasingProcessStore.setCurrentStepId(nextStep.value)
+    } else {
+        console.log('fin')
     }
 }
 
