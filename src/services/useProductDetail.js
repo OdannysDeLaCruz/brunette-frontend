@@ -4,31 +4,35 @@ import { useRoute, useRouter } from 'vue-router';
 export function useProductDetail() {
     const route = useRoute()
     const router = useRouter()
-    const productDetail = ref()
+    const productId = ref(false)
 
-    const setProductDetail = () => {
-        if (route.query.productDetail) {
-            productDetail.value = Number(route.query.productDetail)
+    const setProductId = async () => {
+        try {
+            if (route.query.productId) {
+                productId.value = Number(route.query.productId)
+            }
+        } catch ( error ) {
+            throw Error(error)
         }
     }
 
     watch(route, () => {
-        setProductDetail()
+        setProductId()
     })
     
     const closeDetail = () => {
-        productDetail.value = null
+        productId.value = false
         router.replace({
             query: undefined
         })
     }
 
     onMounted(() => {
-        setProductDetail()
+        setProductId()
     })
 
     return  {
-        productDetail,
+        productId,
         closeDetail
     }
 }

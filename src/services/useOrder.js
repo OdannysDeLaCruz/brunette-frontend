@@ -3,10 +3,10 @@ import  { useCartStore } from "../stores/cartStore"
 
 export function useOrder() {
     const { order } = useOrderStore()
-    const cartStore = useCartStore()
+    const { cart } = useCartStore()
 
     const createOrder = () => {
-        order.products = cartStore.products
+        order.products = cart.products
         console.log(order)
     }
 

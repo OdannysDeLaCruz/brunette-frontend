@@ -1,22 +1,25 @@
 <script lang="ts" setup>
-import { computed } from "vue"
+import { ref, watch } from "vue"
 import BModal from "@/components/BModal.vue"
 import BButton from '@/components/BButton.vue';
 import BControlQuantity from "@/components/BControlQuantity.vue";
-import { ref } from "vue";
+import { useProductDetail } from '@/services/useProductDetail'
+import { useProduct } from '@/services/useProduct';
+import { useCartStore } from "../stores/cartStore";
+import { useRouter } from "vue-router";
 
-const props = defineProps({
-    productDetail: {
-        type: Number,
-        default: null
+const router = useRouter()
+const { loading, products, getProductById } = useProduct()
+const { productId, closeDetail } = useProductDetail()
+const { addProduct } = useCartStore()
+
+watch(productId, async (value) => {
+    if ( value ) {
+        await getProductById(productId.value)
     }
 })
 
-const emits = defineEmits(['closeDetail'])
-
-const closeModal = () => {
-    emits('closeDetail')
-}
+defineEmits(['closeDetail'])
 
 const quantity = ref(0)
 const onDecrease = () => {
@@ -28,66 +31,86 @@ const onIncrease = () => {
     quantity.value += 1
 }
 
+const addNewProduct = async () => {
+    try {
+        products.value[0].quantity = quantity.value
+        const wasAdded = await addProduct(products.value[0])
+        if (wasAdded) {
+            router.push({
+                name: 'cart'
+            })
+        }
+    } catch ( error ) {
+        console.log(error.message)
+    }
+}
 </script>
 <template>
-<BModal 
-    position="center" 
-    width="850px"
-    :show="productDetail ? true : false"
-    @closeModal="closeModal"
->
-    <template #modalHeader>
-        <h1 class="detail__title detail__title--no-wrapper">
-            Kanekalon Californiano Jumbo braid
-        </h1>
-    </template>
-    <template #modalBody>
-        <div class="detail">
-            <div class="detail__content">
-                <div class="detail__image-wrapper">
-                    <img
-                        class="detail__image"
-                        src="@/assets/images/kanekalon.jpeg"
-                        alt=""
-                    >
+    <BModal 
+        position="center" 
+        width="850px"
+        :show="productId ? true : false"
+        @closeModal="closeDetail"
+    >
+        
+        <template #modalHeader>
+            <h1 v-if="!loading && products.length" class="detail__title detail__title--no-wrapper">
+                {{ products[0].name }}
+            </h1>
+        </template>
+        <template #modalBody>
+            <template v-if="loading">
+                <div class="detail__loading">
+                    <font-awesome-icon icon="fa-solid fa-circle-notch" spin size="3x" />
                 </div>
-                <div class="detail__summary">
-                    <!-- <h1 class="detail__title">Kanekalon Californiano Jumbo braid </h1> -->
-                    <span class="detail__price">$14.000</span>
-                    <p class="detail__description">
-                        Cabello sintetico para trenzas marca jumbo brais.
-                    </p>
-                    <div class="detail__section-add">
-                        <BControlQuantity
-                            :quantity="quantity"
-                            @onDecrease="onDecrease"
-                            @onIncrease="onIncrease"
-                        />
-
-                        <BButton
-                            color="#000000"
-                            bg="#E7E7E7"
-                            padding="10px 16px"
-                            class="control-quantity__button-add"
+            </template>
+            <div v-else class="detail">
+                <div class="detail__content">
+                    <div class="detail__image-wrapper">
+                        <img
+                            class="detail__image"
+                            src="@/assets/images/kanekalon.jpeg"
+                            alt=""
                         >
-                            AGREGAR AL CARRITO
-                        </BButton>
-                        <BButton
-                            color="#ffffff"
-                            bg="#FFCC00"
-                            padding="10px 16px"
-                            class="control-quantity__button-buy"
-                        >
-                            COMPRAR DE UNA
-                        </BButton>
+                    </div>
+                    <div class="detail__summary">
+                        <!-- <h1 class="detail__title">Kanekalon Californiano Jumbo braid </h1> -->
+                        <span class="detail__price">{{ products[0].price }}</span>
+                        <p class="detail__description">
+                            {{ products[0].description }}
+                        </p>
+                        <div class="detail__section-add">
+                            <BControlQuantity
+                                :quantity="quantity"
+                                @onDecrease="onDecrease"
+                                @onIncrease="onIncrease"
+                            />
+    
+                            <BButton
+                                color="#000000"
+                                bg="#E7E7E7"
+                                padding="10px 16px"
+                                class="control-quantity__button-add"
+                                @click="addNewProduct"
+                            >
+                                AGREGAR AL CARRITO
+                            </BButton>
+                            <BButton
+                                color="#ffffff"
+                                bg="#FFCC00"
+                                padding="10px 16px"
+                                class="control-quantity__button-buy"
+                            >
+                                COMPRAR DE UNA
+                            </BButton>
+                        </div>
                     </div>
                 </div>
+                <!-- section "recomendados, mas vendidos, productos vistos, etc" -->
+                <div class="detail__generals" />
             </div>
-            <!-- section "recomendados, mas vendidos, productos vistos, etc" -->
-            <div class="detail__generals" />
-        </div>
-    </template>
-</BModal>
+        </template>
+    </BModal>
 </template>
 <style lang="scss" scoped>
 .detail {
@@ -159,6 +182,14 @@ const onIncrease = () => {
 .control-quantity__button-buy {
     grid-column-start: 1;
     grid-column-end: 3;
+}
+
+.detail__loading {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media (min-width: 576px) {

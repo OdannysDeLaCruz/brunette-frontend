@@ -125,7 +125,7 @@ const closeModal = () => {
 }
 .modal__close {
     cursor: pointer;
-    margin-left: 10px;
+    margin-left: auto;
 }
 .modal__body {
     margin-top: v-bind(headerHeight);

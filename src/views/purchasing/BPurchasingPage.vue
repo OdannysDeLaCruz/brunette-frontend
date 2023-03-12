@@ -18,19 +18,12 @@ const { createOrder } = useOrder()
 const nextStep = ref(false)
 
 watch(route, (newRoute) => {
-    console.log(newRoute.name)
-    
     if ( navigation.includes(newRoute.name) ) {
         setCurrentStepId(newRoute.name)
-    } else {
-        router.push({
-            name: 'cart'
-        })
     }
 })
 
 onMounted(() => {
-    console.log(route.name)
     setCurrentStepId(route.name)
 })
 
@@ -43,7 +36,6 @@ const get_next_step = () => {
         })
         setCurrentStepId(nextStep.value)
     } else {
-        console.log('fin')
         createOrder()
     }
 }

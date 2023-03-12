@@ -21,7 +21,7 @@ const props = defineProps({
 const showDetail = () => {
     router.push({
         query: {
-            productDetail: props.id
+            productId: props.id
         }
     })
 }

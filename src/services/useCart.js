@@ -1,28 +1,19 @@
-// Product mooc
-const product = {
-    id: 1,
-    name: '',
-    price: 1000,
-    oldPrice: 1000,
-    stock: 10
-}
-// Array products mooc
-const products = [ product ]
-// Cart mooc
-const cart = { 
-    id: 1, 
-    quantity: 1, 
-    products
-}
-
+import { ref } from "vue"
 
 export function useCart() {
+
+    const cart = ref({ 
+        total: 0,
+        quantity: 0, 
+        products: []
+    })
+
     const getCart = async () => { 
         try {
             // TODO: get user´s cart 
             return new Promise((resolve, reject) => {
                 setTimeout(()=> {
-                    resolve(cart)
+                    resolve(cart.value)
                 }, 3000)
             })
         } catch (error) {

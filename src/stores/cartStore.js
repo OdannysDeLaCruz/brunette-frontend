@@ -1,34 +1,68 @@
 import { defineStore } from "pinia";
+import { ref } from "vue";
 import { useCart } from "../services/useCart";
 
 const { getCart } = useCart()
 
-export const useCartStore = defineStore('cartStore', {
-    state: () => ({
-        cart: {
-            id: 0,
-            products: [],
-            quantity: 0
-        },
-        loading: true
-    }),
-    getters: {
-        products: ( state ) => state.cart.products,
-        quantity: ( state ) => state.cart.quantity
-    },
-    actions: {
-        async getProducts() {
-            this.loading = true
-            try {
+export const useCartStore = defineStore('cartStore', () => {
+    const cart =  ref({
+        total: 0,
+        quantity: 0,
+        products: [],
+    })
 
-                this.cart = await getCart()
-                this.loading = false
-                
-            } catch( error ) {
-                return []
+    const loading = ref(true)
+
+    const getProducts = async() => {
+        loading.value = true
+        try {
+            cart.value = await getCart()
+            loading.value = false
+        } catch( error ) {
+            return []
+        }
+    }
+
+    const addProduct = async (newProduct) => {
+        // TODO: validar diplicados, mayor a cero, etc
+        console.log(newProduct, newProduct.quantity)
+        try {
+            if ( newProduct.quantity == 0 ) {
+                throw Error('Quantity must be greater than zero')
             }
             
-            // return this.cart.products
+            const product = cart.value.products.find(product => product.id == newProduct.id)
+            if ( !product ) {
+                cart.value.products.push(newProduct)
+                return true
+            }
+
+        } catch ( error ) {
+            throw error
         }
+
+    }
+
+    const decreaseQuantity = async (id) => {
+        const product = cart.value.products.find(product => product.id == id)
+        console.log(product)
+        if ( product.quantity > 1 ) {
+            product.quantity -= 1
+        }
+        
+    }
+    const increaseQuantity = async (id) => {
+        const product = cart.value.products.find(product => product.id == id)
+        console.log(product)
+        product.quantity += 1
+    }
+
+    return {
+        cart,
+        loading,
+        getProducts,
+        addProduct,
+        decreaseQuantity,
+        increaseQuantity,
     }
 })

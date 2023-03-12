@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 import { useCartStore } from '../../stores/cartStore';
 
 const router = useRouter()
-const cartStore = useCartStore()
+const { cart } = useCartStore()
 
 const backgroundColorCounter = ref('white')
 
@@ -22,7 +22,7 @@ const showCart = () => {
 }
 
 onMounted(() => {
-    console.log(cartStore.products)
+    console.log(cart.products)
     if ( props.color === 'white' ) {
         backgroundColorCounter: 'black'
     } 
@@ -38,11 +38,11 @@ onMounted(() => {
     @click="showCart"
 >
     <div
-        v-if="cartStore.products"
+        v-if="cart.products"
         class="cart__counter text-sm text-black font-bold" 
         :style="{ backgroundColor: backgroundColorCounter}"
     >
-        {{ cartStore.quantity }}
+        {{ cart.quantity }}
     </div>
     <svg
         class="cart__icon"

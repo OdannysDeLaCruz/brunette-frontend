@@ -9,8 +9,14 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.3.0",
+    "@fortawesome/free-brands-svg-icons": "^6.3.0",
+    "@fortawesome/free-regular-svg-icons": "^6.3.0",
+    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@fortawesome/vue-fontawesome": "^3.0.3",
     "axios": "^1.2.2",
     "core-js": "^3.25.1",
+    "dotenv": "^16.0.3",
     "pinia": "^2.0.28",
     "register-service-worker": "^1.7.1",
     "vue": "^3.2.39",

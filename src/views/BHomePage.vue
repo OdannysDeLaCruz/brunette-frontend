@@ -1,15 +1,11 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { ref } from 'vue'
 import BCarouselCategories from '@/components/BCarouselCategories.vue'
 import BBanner from '@/components/BBanner.vue'
 import BPaymentMethodsList from '@/components/payment/BPaymentMethodsList.vue';
 import BCarouselProducts from '@/components/BCarouselProducts.vue';
 import BContent from '@/components/layouts/BContent.vue';
-import BProductDetail from '@/components/BProductDetail.vue';
-import { useProductDetail } from '@/services/useProductDetail'
-
-const { productDetail, closeDetail } = useProductDetail()
+import BProductDetail from '@/components/BProductDetail.vue'
 
 const products: any = ref([
     {
@@ -43,8 +39,6 @@ const products: any = ref([
         price: 3500
     },
 ])
-
-const route = useRoute()
 
 </script>
 <template>
@@ -89,10 +83,7 @@ const route = useRoute()
     </section>
 </BContent>
 
-<BProductDetail
-    :product-detail="productDetail"
-    @closeDetail="closeDetail"
-/>
+<BProductDetail />
 </template>
 <style lang="scss" scoped>
 .content-custom__carousel-categories {

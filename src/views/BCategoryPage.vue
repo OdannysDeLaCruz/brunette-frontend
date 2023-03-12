@@ -4,9 +4,6 @@ import BProductFluid from '@/components/BProductFluid.vue';
 import BBreadCrumb from '@/components/BBreadCrumb.vue';
 import BModalFilter from '../components/menus/filters/BModalFilter.vue';
 import BProductDetail from '@/components/BProductDetail.vue';
-import { useProductDetail } from '@/services/useProductDetail'
-
-const { productDetail, closeDetail } = useProductDetail()
 
 const route = useRoute()
 </script>
@@ -45,10 +42,7 @@ const route = useRoute()
         />
     </section>
 </section>
-<BProductDetail
-    :product-detail="productDetail"
-    @closeDetail="closeDetail"
-/>
+<BProductDetail />
 </template>
 
 <style lang="scss" scoped>

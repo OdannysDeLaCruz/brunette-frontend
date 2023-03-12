@@ -1,5 +1,8 @@
 <script lang="ts" setup>
 import BControlQuantity from '../BControlQuantity.vue';
+import { useCartStore } from '../../stores/cartStore';
+
+const { decreaseQuantity, increaseQuantity } = useCartStore()
 
 defineProps({
     product: {
@@ -7,6 +10,7 @@ defineProps({
         required: true
     },
 })
+
 
 </script>
 
@@ -33,7 +37,11 @@ defineProps({
             </div>
         </div>
         <div class="cart-item__control-quantity">
-            <BControlQuantity :quantity="product.quantity" />
+            <BControlQuantity 
+                :quantity="product.quantity"  
+                @onDecrease="decreaseQuantity(product.id)"
+                @onIncrease="increaseQuantity(product.id)" 
+            />
         </div>
     </div>
 </div>
