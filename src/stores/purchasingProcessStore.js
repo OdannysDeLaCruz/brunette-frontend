@@ -20,21 +20,21 @@ export const usePurchasingProcessStore = defineStore('purchasingProcessStore', (
             name: 'shippingMethod',
             url: '/purchasing/shippingMethod',
             title: '¿Como quieres recibir tu pedido?',
-            data: [
+            data: {
                 // Estos datos deben ser configurados o actualizados cada vez desde el back al entrar a /cart
-                {
+                deliveryToMyHome: {
                     id: 1,
                     label: 'Domicilio a mi casa',
                     image: 'https://picsum.photos/200/200?random=1',
                     additionalCost: 4000
                 },
-                {
+                pickUpInStore: {
                     id: 2,
                     label: 'Recoger en el local',
                     image: 'https://picsum.photos/200/200?random=2',
                     additionalCost: 0
                 }
-            ]
+            }
         },
         'shippingAddress': {
             name: 'shippingAddress',

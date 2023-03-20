@@ -26,19 +26,19 @@ export function useCartStore() {
 
     const findProductInCart = (id) => cart.value.products.find(product => product.id == id)
 
-    const addProduct = async (newProduct) => {
+    const addProduct = async ({ id, name, quantity, price }) => {
         try {
-            if ( newProduct.quantity == 0 ) {
+            if ( quantity == 0 ) {
                 throw Error('Quantity must be greater than zero')
             }
             
-            const isProductAdded = findProductInCart(newProduct.id)
+            const isProductAdded = findProductInCart(id)
 
             if ( isProductAdded ) {
                 cart.value.products[isProductAdded.id].quantity += 1
             } else {
-                cart.value.products.push(newProduct)
-                cart.value.quantity += newProduct.quantity
+                cart.value.products.push({ id, name, quantity, price })
+                cart.value.quantity += quantity
             }
 
             return true

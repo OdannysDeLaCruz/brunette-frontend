@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useOrder } from "../services/useOrder";
+import { usePurchasingProcessStore } from "../stores/purchasingProcessStore"
 
 const { order } = useOrder()
 
@@ -86,15 +87,25 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
 
-  if ( to.name === 'shippingAddress') {
-    const shippingMethodId = 2
-    if ( order.value.shipping.method === shippingMethodId ) {
-      next({ name: 'paymentMethod' })
+    if ( to.name === 'shippingAddress') {
+        const { steps } = usePurchasingProcessStore()
+
+        const shippingMethodSelectedId = order.value.shipping.method 
+        const deliveryToMyHomeId = 1
+        const pickUpInStoreId = 2
+
+        if ( shippingMethodSelectedId === deliveryToMyHomeId ) {
+            order.value.shipping.additionalCost = steps['shippingMethod'].data.deliveryToMyHome.additionalCost
+            next()
+        } 
+        if ( shippingMethodSelectedId === pickUpInStoreId ) {
+            order.value.shipping.additionalCost = 0
+            next({ name: 'paymentMethod' })
+        }
+        
+    } else {
+        next()
     }
-    next()
-  } else {
-    next()
-  }
 })
 
 export default router

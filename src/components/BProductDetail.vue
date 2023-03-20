@@ -89,22 +89,22 @@ const addNewProduct = async () => {
                             />
     
                             <BButton
-                                color="#000000"
-                                bg="#E7E7E7"
+                                color="#ffffff"
+                                bg="#FFCC00"
                                 padding="10px 16px"
                                 class="control-quantity__button-add"
                                 @click="addNewProduct"
                             >
                                 AGREGAR AL CARRITO
                             </BButton>
-                            <BButton
+                            <!-- <BButton
                                 color="#ffffff"
                                 bg="#FFCC00"
                                 padding="10px 16px"
                                 class="control-quantity__button-buy"
                             >
-                                COMPRAR DE UNA
-                            </BButton>
+                                COMPRAR YA
+                            </BButton> -->
                         </div>
                     </div>
                 </div>
@@ -184,6 +184,7 @@ const addNewProduct = async () => {
 .control-quantity__button-buy {
     grid-column-start: 1;
     grid-column-end: 3;
+    width: 100%;
 }
 
 .detail__loading {

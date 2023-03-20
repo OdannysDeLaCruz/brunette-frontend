@@ -1,5 +1,8 @@
 <script setup>
 import BButton from "@/components/BButton.vue";
+import { useOrder } from "@/services/useOrder";
+
+const { order, total } = useOrder()
 
 defineProps({
     buttonText: {
@@ -16,13 +19,18 @@ defineProps({
 <template>
 <div class="purchasing-process__resumen">
     <div class="purchasing-process__resumen__ammount">
-        <span
-            class="
-                    purchasing-process__resumen__ammount__item
-                    purchasing-process__resumen__ammount__item--small
-                "
-        >Envío $ 4.000</span>
-        <span class="purchasing-process__resumen__ammount__item">Total $ 40.000</span>
+        <span 
+            v-if="order.shipping.additionalCost"
+            class="purchasing-process__resumen__ammount__item purchasing-process__resumen__ammount__item--small"
+        >
+            Envío {{ order.shipping.additionalCost }}
+        </span>
+        <span 
+            v-if="total"
+            class="purchasing-process__resumen__ammount__item"
+        >
+            Total {{ total }}
+        </span>
     </div>
     <BButton
         class="purchasing-process__resumen__button-next"

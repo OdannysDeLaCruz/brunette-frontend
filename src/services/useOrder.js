@@ -1,4 +1,4 @@
-import { ref } from "vue"
+import { ref, computed } from "vue"
 // import { useOrderStore } from "../stores/orderStore"
 import  { useCartStore } from "../stores/cartStore"
 
@@ -10,18 +10,28 @@ const order = ref({
     },
     shipping: {
         method: null,
-        address: null
-    }
+        address: null,
+        additionalCost: 0
+    },
+    total: 0
 })
 
 export function useOrder() {
     // const { order } = useOrderStore()
     const { cart } = useCartStore()
 
+    const total = computed(() => {
+        let t = 0
+        cart.value.products.map(product => {
+            t += (product.price * product.quantity)
+        })
+        return t + order.value.shipping.additionalCost
+    })
+
     const createOrder = () => {
-        order.value.products = cart.products
-        console.log(order)
-    }     
+        order.value.products = cart.value.products
+        console.log(order.value)
+    }
 
     const saveOrderLocally = () => {
         localStorage.setItem('order', JSON.stringify(order.value))
@@ -58,6 +68,7 @@ export function useOrder() {
 
     return {
         order,
+        total,
         createOrder,
         saveOrderLocally,
         setOrder,
