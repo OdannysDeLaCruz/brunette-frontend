@@ -2,7 +2,7 @@
 import BControlQuantity from '../BControlQuantity.vue';
 import { useCartStore } from '../../stores/cartStore';
 
-const { decreaseQuantity, increaseQuantity } = useCartStore()
+const { decreaseQuantity, increaseQuantity, deleteProduct } = useCartStore()
 
 defineProps({
     product: {
@@ -10,7 +10,6 @@ defineProps({
         required: true
     },
 })
-
 
 </script>
 
@@ -33,7 +32,12 @@ defineProps({
                 <span class="cart-item__prices__item cart-item__prices__new">{{ product.oldPrice }}</span>
             </div>
             <div class="cart-item__options">
-                <span class="cart-item__options__item cart-item__options__item--color-red">Remove</span>
+                <span 
+                    class="cart-item__options__item cart-item__options__item--color-red" 
+                    @click="() => { deleteProduct(product.id) }"
+                >
+                    Eliminar
+                </span>
             </div>
         </div>
         <div class="cart-item__control-quantity">

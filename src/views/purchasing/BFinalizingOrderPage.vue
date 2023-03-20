@@ -10,15 +10,11 @@ import BPurchasingSegment from "./components/BPurchasingSegment.vue";
         class="finalizing-order__title"
     />
         
-    <BPurchasingSegment title="Ten en cuenta lo siguiente:">
+    <BPurchasingSegment title="">
         <template #purchasingSegmentList>
             <article class="finalizing-order__disclaimer">
-                <p>
-                    Para transferencias bancarias debes presentar soporte de pago en un transcurso de 24 horas después de realizado el pedido. No te preocupes, apartaremos tu pedido durante todo ese tiempo.
-                </p>
-                <p>
-                    En caso de no presentar soporte pago de tu orden, esta será cancelada.
-                </p>
+                <h1 class="title">Apartaremos tu pedido durante 24 horas, presenta tu soporte de pago durante ese tiempo para finzalizar la orden.</h1>
+                <p>En caso de no presentar soporte pago tu orden se cancelará.</p>
             </article>
         </template>
     </BPurchasingSegment>
@@ -34,8 +30,16 @@ import BPurchasingSegment from "./components/BPurchasingSegment.vue";
     text-align: justify;
     padding: 25px;
 }
+.finalizing-order__disclaimer .title {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 28px;
+    margin-bottom: 16px;
+    text-align: center;
+}
 .finalizing-order__disclaimer p {
     margin-bottom: 20px;
+    text-align: center;
 }
 
 </style>

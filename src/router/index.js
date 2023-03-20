@@ -1,4 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useOrder } from "../services/useOrder";
+
+const { order } = useOrder()
 
 const routes = [
   // {
@@ -50,7 +53,7 @@ const routes = [
         {
             path: 'shippingMethod',
             name: 'shippingMethod',
-            component: () => import('../views/purchasing/BShippingMethodPage.vue')
+            component: () => import('../views/purchasing/BShippingMethodPage.vue'),
         },
         {
             path: 'shippingAddress',
@@ -79,6 +82,19 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+
+  if ( to.name === 'shippingAddress') {
+    const shippingMethodId = 2
+    if ( order.value.shipping.method === shippingMethodId ) {
+      next({ name: 'paymentMethod' })
+    }
+    next()
+  } else {
+    next()
+  }
 })
 
 export default router

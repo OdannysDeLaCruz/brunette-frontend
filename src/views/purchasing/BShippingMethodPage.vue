@@ -4,12 +4,12 @@ import BPurchasingTitle from "./components/BPurchasingTitle.vue";
 import BPurchasingSegment from "./components/BPurchasingSegment.vue";
 import BRadioCardCompact from "@/components/inputs/BRadioCardCompact.vue";
 import { usePurchasingProcessStore } from '../../stores/purchasingProcessStore';
-import { useOrderStore } from "../../stores/orderStore";
+import { useOrder } from "../../services/useOrder";
 
 const { steps } = usePurchasingProcessStore()
 const shippingMethod = ref(steps['shippingMethod'])
 
-const { order, saveShippingMethod } = useOrderStore()
+const { order, saveShippingMethod } = useOrder()
 
 const handleSelected = (id)  => {
     console.log('id emitted', id)
@@ -17,7 +17,9 @@ const handleSelected = (id)  => {
 }
 
 const isActive = (id) => {
-    return order.shipping.method && order.shipping.method === id
+    return order.value.shipping.method && order.value.shipping.method == id
+        ? true
+        : false
 }
 
 </script>

@@ -6,22 +6,22 @@ import BControlQuantity from "@/components/BControlQuantity.vue";
 import { useProductDetail } from '@/services/useProductDetail'
 import { useProduct } from '@/services/useProduct';
 import { useCartStore } from "../stores/cartStore";
-import { useRouter } from "vue-router";
+// import { useRouter } from "vue-router";
 
-const router = useRouter()
+// const router = useRouter()
 const { loading, products, getProductById } = useProduct()
 const { productId, closeDetail } = useProductDetail()
 const { addProduct } = useCartStore()
 
-watch(productId, async (value) => {
+watch(productId, (value) => {
     if ( value ) {
-        await getProductById(productId.value)
+        getProductById(productId.value)
     }
 })
 
 defineEmits(['closeDetail'])
 
-const quantity = ref(0)
+const quantity = ref(1)
 const onDecrease = () => {
     if ( quantity.value > 0 ) {
         quantity.value -= 1
@@ -36,9 +36,11 @@ const addNewProduct = async () => {
         products.value[0].quantity = quantity.value
         const wasAdded = await addProduct(products.value[0])
         if (wasAdded) {
-            router.push({
-                name: 'cart'
-            })
+            // router.push({
+            //     name: 'cart'
+            // })
+            closeDetail()
+            console.log('Producto agregado')
         }
     } catch ( error ) {
         console.log(error.message)

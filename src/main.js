@@ -8,10 +8,10 @@ import './assets/styles/main.scss'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // Icons
-import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
+import { faCircleNotch, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
-library.add(faCircleNotch)
+library.add(faCircleNotch, faArrowLeft)
 
 const app = createApp(App)
 const pinia = createPinia()

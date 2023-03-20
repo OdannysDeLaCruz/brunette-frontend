@@ -1,7 +1,7 @@
 import { ref } from "vue"
 import { defineStore } from "pinia"
 
-export const useOrderStore = defineStore('OrderStore', () => {
+export const useOrderStore = defineStore('order', () => {
     const order = ref({
         userId: null,
         products: [],
@@ -55,7 +55,6 @@ export const useOrderStore = defineStore('OrderStore', () => {
         saveProducts,
         savePaymentMethod,
         saveShippingMethod,
-        saveShippingAddress,
-
+        saveShippingAddress
     }
 })

@@ -22,7 +22,7 @@ const showCart = () => {
 }
 
 onMounted(() => {
-    console.log(cart.products)
+    console.log(cart.value.quantity)
     if ( props.color === 'white' ) {
         backgroundColorCounter: 'black'
     } 
@@ -38,7 +38,7 @@ onMounted(() => {
     @click="showCart"
 >
     <div
-        v-if="cart.products"
+        v-if="cart.quantity"
         class="cart__counter text-sm text-black font-bold" 
         :style="{ backgroundColor: backgroundColorCounter}"
     >
@@ -66,6 +66,7 @@ onMounted(() => {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
 }
 
 .cart__counter {

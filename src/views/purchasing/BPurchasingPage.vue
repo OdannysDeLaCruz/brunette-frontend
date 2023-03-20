@@ -4,16 +4,15 @@ import { useRouter, useRoute } from "vue-router"
 import { usePurchasingProcessStore } from "@/stores/purchasingProcessStore";
 import BPurchasingProcessResumen from "./components/BPurchasingProcessResumen.vue";
 import BContent from "@/components/layouts/BContent.vue"
-import { useOrderStore } from "../../stores/orderStore";
 import { useOrder } from "../../services/useOrder";
+import BButton from "../../components/BButton.vue";
 
 const route = useRoute()
 const router = useRouter()
 const { navigation, steps, setCurrentStepId, getNextStep } = usePurchasingProcessStore()
 
-const { setOrder } = useOrderStore()
+const { setOrder, createOrder } = useOrder()
 setOrder()
-const { createOrder } = useOrder()
 
 const nextStep = ref(false)
 
@@ -34,6 +33,7 @@ const get_next_step = () => {
         router.push({
             path: steps[nextStep.value].url 
         })
+
         setCurrentStepId(nextStep.value)
     } else {
         createOrder()
@@ -44,6 +44,16 @@ const get_next_step = () => {
 <template>
 <BContent>
     <section class="purchasing-process">
+        <BButton
+            color="#ffffff"
+            bg="#FFCC00"
+            padding="10px 16px"
+            style="margin: 0 0 20px 0"
+            @click="router.go(-1)"
+        >
+            <font-awesome-icon :icon="['fas', 'arrow-left']" />
+        </BButton>
+
         <router-view />
         <BPurchasingProcessResumen :button-text="'Continuar'" :click="get_next_step" />
     </section>
